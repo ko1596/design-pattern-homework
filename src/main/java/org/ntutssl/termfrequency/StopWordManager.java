@@ -11,21 +11,14 @@ public class StopWordManager{
 
     public StopWordManager(){
         this.stopWords = new ArrayList<>();
-        Scanner sc = null;
-        try{
-            File file = new File("input/stop_words.txt");
-            sc = new Scanner(file);
+        try(Scanner sc = new Scanner(new File("input/stop_words.txt"))){
             sc.useDelimiter(",");
             while(sc.hasNext()){
                 this.stopWords.add(sc.next());
             }
-
+            
         }catch(IOException e){
             System.out.println("Cannot found the file.");
-        }finally{
-            if(sc != null){
-                sc.close();
-            }
         }
      }
 
