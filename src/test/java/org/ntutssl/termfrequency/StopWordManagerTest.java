@@ -8,6 +8,7 @@ public class StopWordManagerTest{
     @Test
     public void test_stop_word(){
         StopWordManager swm = new StopWordManager();
+        assertTrue(swm.isStopWord("a"));
         assertTrue(swm.isStopWord("the"));
     }
  }
