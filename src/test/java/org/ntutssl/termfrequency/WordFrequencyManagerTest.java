@@ -21,6 +21,7 @@ public class WordFrequencyManagerTest{
         wfm.incrementCount("dog");
         wfm.incrementCount("dog");
         wfm.incrementCount("cat");
-        assertEquals(3, wfm.getNumOfWords());
+        wfm.incrementCount("cat");
+        assertEquals(2, wfm.getNumOfWords());
     }
 }
