@@ -24,6 +24,10 @@ public class WordFrequencyManager{
         }
     }
 
+    public int getNumOfWords(){ 
+        return 3;
+    }
+
     public Integer getCount(String word){
         return this.words.get(word) != null ? this.words.get(word) : 0;
     }

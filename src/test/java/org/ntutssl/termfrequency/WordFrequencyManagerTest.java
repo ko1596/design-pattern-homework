@@ -15,4 +15,12 @@ public class WordFrequencyManagerTest{
         assertEquals(Integer.valueOf(1), wfm.getCount("cat"));
         assertEquals(Integer.valueOf(0), wfm.getCount("mouse"));
     }
+    @Test
+    public void test_get_number_of_word(){
+        WordFrequencyManager wfm = new WordFrequencyManager();
+        wfm.incrementCount("dog");
+        wfm.incrementCount("dog");
+        wfm.incrementCount("cat");
+        assertEquals(3, wfm.getNumOfWords());
+    }
 }
