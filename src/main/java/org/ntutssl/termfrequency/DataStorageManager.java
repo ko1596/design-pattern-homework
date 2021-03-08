@@ -12,12 +12,11 @@ public class DataStorageManager{
     private String nextWord;
 
     public DataStorageManager(String filePath){
-        this.allWords = new ArrayList<>();
+        this.allWords = new ArrayList<String>();
         try(Scanner sc = new Scanner(new File(filePath))){
-            sc.useDelimiter("\\W");
+            sc.useDelimiter("[\\W_]+");
             while(sc.hasNext()){
-                nextWord = sc.next();
-                if(!nextWord.equals("")) this.allWords.add(sc.next().toLowerCase());
+                this.allWords.add(sc.next().toLowerCase());
             }
             
         }catch(IOException e){
