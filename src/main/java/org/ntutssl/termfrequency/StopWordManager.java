@@ -11,14 +11,17 @@ import java.util.HashSet;
 public class StopWordManager{
     private List<String> stopWordsList;
     private Set<String> stopWordsSet;
+    private String nextStopWord;
 
-    public StopWordManager(){
+    public StopWordManager(String filePath){
         this.stopWordsList = new ArrayList<>();
         this.stopWordsSet = new HashSet<>();
-        try(Scanner sc = new Scanner(new File("input/stop_words.txt"))){
+        try(Scanner sc = new Scanner(new File(filePath))){
             sc.useDelimiter(",");
             while(sc.hasNext()){
-                this.stopWords.add(sc.next());
+                nextStopWord = sc.next();
+                this.stopWordsList.add(nextStopWord);
+                this.stopWordsSet.add(nextStopWord);
             }
             
         }catch(IOException e){
@@ -26,8 +29,12 @@ public class StopWordManager{
         }
      }
 
-     public boolean isStopWord(String word){
-         return this.stopWords.contains(word);
+     public boolean isStopWordList(String word){
+         return this.stopWordsList.contains(word);
+     }
+
+     public boolean isStopWordSet(String word){
+         return this.stopWordsSet.contains(word);
      }
 
 
