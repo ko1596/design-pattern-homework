@@ -1,8 +1,12 @@
 package org.ntutssl.termfrequency;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
 
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
+import java.util.Set;
 
 import org.junit.Test;
 
@@ -32,11 +36,12 @@ public class WordFrequencyManagerTest{
         WordFrequencyManager wfm = new WordFrequencyManager();
         wfm.incrementCount("dog");
         wfm.incrementCount("dog");
-        wfm.incrementCount("dqog");
+        wfm.incrementCount("dog");
         wfm.incrementCount("cat");
         wfm.incrementCount("cat");
         wfm.incrementCount("mouse");
-        List<String> converteMap = 
-        assertEquals(2, wfm.getNumOfWords());
+        List<Map.Entry<String, Integer>> converteMap = new ArrayList<Map.Entry<String, Integer>>(wfm.getWordFrequencyAscending().entrySet());
+        assertTrue(converteMap.get(0).getValue() < converteMap.get(converteMap.size()-1).getValue() );
+        
     }
 }

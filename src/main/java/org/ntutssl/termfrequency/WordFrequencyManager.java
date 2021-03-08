@@ -36,7 +36,7 @@ public class WordFrequencyManager{
         Map<String, Integer> desSortList = new LinkedHashMap<>();
 
         this.words.entrySet().stream()
-            .sorted(Map.Entry.<String, Integer>comparingByValue())
+            .sorted(Map.Entry.<String, Integer>comparingByValue().reversed())
             .forEachOrdered(x -> desSortList.put(x.getKey(), x.getValue()));
         
         return desSortList;
@@ -48,7 +48,7 @@ public class WordFrequencyManager{
         Map<String, Integer> AscSortList = new LinkedHashMap<>();
 
         this.words.entrySet().stream()
-            .sorted(Map.Entry.<String, Integer>comparingByValue().reversed())
+            .sorted(Map.Entry.<String, Integer>comparingByValue())
             .forEachOrdered(x -> AscSortList.put(x.getKey(), x.getValue()));
         
         return AscSortList;
