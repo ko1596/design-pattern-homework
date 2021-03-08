@@ -32,4 +32,25 @@ public class WordFrequencyManager{
         return this.words.get(word) != null ? this.words.get(word) : 0;
     }
 
+    public Map<String, Integer> getWordFrequencyDescending(){
+        Map<String, Integer> desSortList = new LinkedHashMap<>();
+
+        this.words.entrySet().stream()
+            .sorted(Map.Entry.<String, Integer>comparingByValue())
+            .forEachOrdered(x -> desSortList.put(x.getKey(), x.getValue()));
+        
+        return desSortList;
+        
+     }
+
+    public Map<String, Integer> getWordFrequencyAscending(){
+        
+        Map<String, Integer> AscSortList = new LinkedHashMap<>();
+
+        this.words.entrySet().stream()
+            .sorted(Map.Entry.<String, Integer>comparingByValue().reversed())
+            .forEachOrdered(x -> AscSortList.put(x.getKey(), x.getValue()));
+        
+        return AscSortList;
+    }
 }
