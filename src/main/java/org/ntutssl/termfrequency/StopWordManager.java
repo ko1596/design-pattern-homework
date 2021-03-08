@@ -30,11 +30,13 @@ public class StopWordManager{
      }
 
      public boolean isStopWordList(String word){
-         return this.stopWordsList.contains(word);
+         if(word.length()>1) return this.stopWordsList.contains(word);
+         else return true;
      }
 
      public boolean isStopWordSet(String word){
-         return this.stopWordsSet.contains(word);
+        if(word.length()>1) return this.stopWordsSet.contains(word);
+        else return true;
      }
 
 

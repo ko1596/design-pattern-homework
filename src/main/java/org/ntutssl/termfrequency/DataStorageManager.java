@@ -9,13 +9,15 @@ import java.util.Scanner;
 
 public class DataStorageManager{
     private List<String> allWords;
+    private String nextWord;
 
     public DataStorageManager(String filePath){
         this.allWords = new ArrayList<>();
         try(Scanner sc = new Scanner(new File(filePath))){
             sc.useDelimiter("\\W");
             while(sc.hasNext()){
-                this.allWords.add(sc.next());
+                nextWord = sc.next();
+                if(!nextWord.equals("")) this.allWords.add(sc.next().toLowerCase());
             }
             
         }catch(IOException e){
