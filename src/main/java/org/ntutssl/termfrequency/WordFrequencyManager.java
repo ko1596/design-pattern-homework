@@ -59,7 +59,9 @@ public class WordFrequencyManager implements IWordFrequencyManager {
      }
 
     public void output(String outputPath, String order, int range, IOHandler handler) {
-        if(range<1||range>getNumOfWords()){
+        if(getNumOfWords()==0){
+            throw new WordFrequencyException("Word not found.");
+        }else if(range<1||range>getNumOfWords()){
             throw new WordFrequencyException("Out of range! The range should be from 1 to "+getNumOfWords()+".");
         }
         if(order.equals("asc") ){
