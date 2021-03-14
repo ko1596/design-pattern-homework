@@ -2,7 +2,11 @@ package org.ntutssl.termfrequency;
 
 import static org.junit.Assert.assertTrue;
 
+import java.io.File;
+import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Scanner;
 import java.util.Set;
 
 import org.junit.Test;
@@ -92,6 +96,29 @@ public class IOHandlerTest {
         IOHandler ioh = new IOHandler();
         Set<String> test_set_string = ioh.handleInputAsSet("input/pride-and-prejudice.txt", "[\\W_]+");
         assertTrue(test_set_string.contains("ebooks"));
+    }
+
+    @Test
+    public void test_handleOutput(){
+        IOHandler ioh = new IOHandler();
+        List<String> test_data = new ArrayList<>();
+        List<String> read_data = new ArrayList<>();
+        test_data.add("a\n");
+        test_data.add("b\n");
+        test_data.add("c\n");
+        test_data.add("d\n");
+        ioh.handleOutput("output/test.txt", 3, test_data);
+        
+        try(Scanner sc = new Scanner(new File("output/test.txt"))){
+            sc.useDelimiter("[\\W_]+");
+            while(sc.hasNext()){
+                read_data.add(sc.next().toLowerCase());
+            }
+        }catch(IOException e){
+            System.out.println("Cannot found the file.");
+        }
+
+        assertTrue(test_data.contains("b"));
     }
 
  }
