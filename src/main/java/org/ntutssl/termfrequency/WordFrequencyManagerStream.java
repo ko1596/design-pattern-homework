@@ -31,22 +31,19 @@ public class WordFrequencyManagerStream implements IWordFrequencyManager {
     public List<String> getWordFrequency(SortOrder order) {
         List<String> outputList = new ArrayList<>();
 
-        switch (order) {
-            case ASCENDING:
-                this.words.entrySet().stream()
-                    .sorted(Map.Entry.<String, Integer>comparingByValue())
-                    .forEachOrdered(x -> outputList.add(x.getKey() + ": " + x.getValue() + "\n"));
-                return outputList;
-        case DESCENDING:
-                this.words.entrySet().stream()
-                    .sorted(Map.Entry.<String, Integer>comparingByValue().reversed())
-                    .forEachOrdered(x -> outputList.add(x.getKey() + ": " + x.getValue() + "\n"));
-
-                return outputList;
-
-            default:
-                return null;
+        if(order==SortOrder.ASCENDING){
+            this.words.entrySet().stream()
+            .sorted(Map.Entry.<String, Integer>comparingByValue())
+            .forEachOrdered(x -> outputList.add(x.getKey() + ": " + x.getValue() + "\n"));
+            return outputList;
         }
+        else{
+            this.words.entrySet().stream()
+            .sorted(Map.Entry.<String, Integer>comparingByValue().reversed())
+            .forEachOrdered(x -> outputList.add(x.getKey() + ": " + x.getValue() + "\n"));
+            return outputList;
+        }
+
     }
 
     @Override
