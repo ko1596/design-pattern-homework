@@ -1,7 +1,14 @@
 package org.ntutssl.termfrequency;
 
-import static org.junit.Assert.assertTrue;
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
+
+import java.io.File;
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Scanner;
+
 import org.junit.Test;
 
 
@@ -14,5 +21,24 @@ public class WordFrequencyManagerStreamTest {
         wfm.incrementCount("cat");
         wfm.incrementCount("cat");
         assertEquals(2, wfm.getNumOfWords());
+    }
+
+    @Test
+
+    public void test_WFMS_output_is_work(){
+        IOHandler ioh = new IOHandler();
+        List<String> read_data = new ArrayList<>();
+        WordFrequencyManagerStream wfms = new WordFrequencyManagerStream();
+        wfms.output("output/output.txt", "asc", 5, ioh);
+
+        try(Scanner sc = new Scanner(new File("output/output.txt"))){
+            sc.useDelimiter("[\\W_]+");
+            while(sc.hasNext()){
+                read_data.add(sc.next().toLowerCase());
+            }
+        }catch(IOException e){
+            System.out.println("Cannot found the file.");
+        }
+        assertTrue(read_data.contains("mr: 786"));
     }
 }

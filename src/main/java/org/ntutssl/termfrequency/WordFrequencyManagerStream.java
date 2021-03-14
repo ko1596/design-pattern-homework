@@ -25,20 +25,21 @@ public class WordFrequencyManagerStream implements IWordFrequencyManager {
         return this.words.size();
      }
 
-    // public List<String> getWordFrequency(SortOrder order) { }
-
-    // private List<String> sort(SortOrder order) { }
-
-    // public void output(
-    //     String outputPath,
-    //     String order,
-    //     int range,
-    //     IOHandler handler
-    // ){ }
 
     @Override
     public List<String> getWordFrequency(SortOrder order) {
-        // TODO Auto-generated method stub
+        switch (order) {
+            case ASCENDING:
+                
+                break;
+
+            case DESCENDING:
+
+                break;
+
+            default:
+                break;
+        }
         return null;
     }
 
