@@ -8,36 +8,10 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashSet;
 
-public class StopWordManager{
-    private List<String> stopWordsList;
-    private Set<String> stopWordsSet;
-    private String nextStopWord;
+public class StopWordManager implements IStopWordManager {
+    public StopWordManager(String filePath, IOHandler ioHandler) { }
 
-    public StopWordManager(String filePath){
-        this.stopWordsList = new ArrayList<>();
-        this.stopWordsSet = new HashSet<>();
-        try(Scanner sc = new Scanner(new File(filePath))){
-            sc.useDelimiter(",");
-            while(sc.hasNext()){
-                nextStopWord = sc.next();
-                this.stopWordsList.add(nextStopWord);
-                this.stopWordsSet.add(nextStopWord);
-            }
-            
-        }catch(IOException e){
-            System.out.println("Cannot found the file.");
-        }
-     }
-
-     public boolean isStopWordList(String word){
-         if(word.length()>1) return this.stopWordsList.contains(word);
-         else return true;
-     }
-
-     public boolean isStopWordSet(String word){
-        if(word.length()>1) return this.stopWordsSet.contains(word);
-        else return true;
-     }
-
-
+    public boolean isStopWordList(String word) { }
+                    
+    public boolean isStopWordSet(String word) { }
 }

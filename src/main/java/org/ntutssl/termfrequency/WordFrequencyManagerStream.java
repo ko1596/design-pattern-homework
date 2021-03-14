@@ -1,7 +1,7 @@
 package org.ntutssl.termfrequency;
 
-public class WordFrequencyManager implements IWordFrequencyManager {
-    public WordFrequencyManager() { }
+public class WordFrequencyManagerStream implements IWordFrequencyManager {
+    public WordFrequencyManagerStream() { }
 
     public void incrementCount(String word) { }
 

@@ -4,7 +4,7 @@ import static org.junit.Assert.assertTrue;
 
 import org.junit.Test;
 
-public class StopWordManagerTest{
+public class StopWordManagerTest {
     @Test
     public void test_list_is_stop_word_first(){
         StopWordManager swm = new StopWordManager("input/stop_words.txt");
