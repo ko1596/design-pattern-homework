@@ -108,7 +108,7 @@ public class IOHandlerTest {
         test_data.add("c\n");
         test_data.add("d\n");
         ioh.handleOutput("output/test.txt", 3, test_data);
-        
+
         try(Scanner sc = new Scanner(new File("output/test.txt"))){
             sc.useDelimiter("[\\W_]+");
             while(sc.hasNext()){
@@ -117,8 +117,7 @@ public class IOHandlerTest {
         }catch(IOException e){
             System.out.println("Cannot found the file.");
         }
-
-        assertTrue(test_data.contains("b"));
+        assertTrue(read_data.contains("b"));
     }
 
  }

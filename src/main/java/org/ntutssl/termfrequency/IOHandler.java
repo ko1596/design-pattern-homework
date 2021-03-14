@@ -48,23 +48,18 @@ public class IOHandler {
      }
 
     public void handleOutput(String outputPath, int range, List<String> data){
-        BufferedWriter fw = null;
-        try {
-            File file = new File(outputPath);
-            fw = new BufferedWriter(new OutputStreamWriter(new FileOutputStream(file, true), "UTF-8")); // 指點編碼格式，以免讀取時中文字符異常
-            fw.append("input sentence 1 ");
-            fw.newLine();
-            fw.append("input sentence 2 ");
+        File file = new File(outputPath);
+        try(BufferedWriter fw = new BufferedWriter(new OutputStreamWriter(new FileOutputStream(file, false), "UTF-8"));) {
+            
+            for(int i=0;i<range;i++){
+                fw.append(data.get(i));
+            }
+            
             fw.flush(); // 全部寫入緩存中的內容
         }catch (Exception e) {
             e.printStackTrace();
-        }finally {
-            if (fw != null) {
-            try {
-              fw.close();
-            } catch (IOException e) {
-              e.printStackTrace();
-            }
         }
+
+
      }
 }
