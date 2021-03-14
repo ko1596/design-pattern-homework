@@ -28,7 +28,7 @@ public class IOHandler {
                 this.wordsList.add(sc.next().toLowerCase());
             }
         }catch(IOException e){
-            System.out.println("Cannot found the file.");
+            throw new WordFrequencyException("File not found.",e);
         }
 
         return this.wordsList;
@@ -41,7 +41,7 @@ public class IOHandler {
                 this.wordsSet.add(sc.next().toLowerCase());
             }
         }catch(IOException e){
-            System.out.println("Cannot found the file.");
+            throw new WordFrequencyException("File not found.",e);
         }
 
         return this.wordsSet;
@@ -57,7 +57,7 @@ public class IOHandler {
             
             fw.flush(); // 全部寫入緩存中的內容
         }catch (Exception e) {
-            e.printStackTrace();
+            throw new WordFrequencyException(e.getMessage(),e);
         }
 
 
