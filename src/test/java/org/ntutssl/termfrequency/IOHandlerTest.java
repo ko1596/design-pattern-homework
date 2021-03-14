@@ -28,4 +28,25 @@ public class IOHandlerTest {
         assertTrue(test_list_string.contains("your"));
     }
 
+    @Test
+    public void test_list_input_Content_first_word(){
+        IOHandler ioh = new IOHandler();
+        List<String> test_list_string = ioh.handleInputAsList("input/pride-and-prejudice.txt", "[\\W_]+");
+        assertTrue(test_list_string.contains("the"));
+    }
+
+    @Test
+    public void test_list_input_Content_middle_word(){
+        IOHandler ioh = new IOHandler();
+        List<String> test_list_string = ioh.handleInputAsList("input/pride-and-prejudice.txt", "[\\W_]+");
+        assertTrue(test_list_string.contains("light"));
+    }
+
+    @Test
+    public void test_list_input_Content_last_word(){
+        IOHandler ioh = new IOHandler();
+        List<String> test_list_string = ioh.handleInputAsList("input/pride-and-prejudice.txt", "[\\W_]+");
+        assertTrue(test_list_string.contains("ebooks"));
+    }
+
  }
