@@ -11,11 +11,11 @@ import java.util.Set;
 public class IOHandler {
 
     private List<String> wordsList;
-    // private Set<String> wordsSet;
+    private Set<String> wordsSet;
 
     public IOHandler() {
         this.wordsList = new ArrayList<>();
-        // this.wordsSet = new HashSet<>();
+        this.wordsSet = new HashSet<>();
      }
 
     public List<String> handleInputAsList(String filePath, String pattern) {
@@ -31,7 +31,18 @@ public class IOHandler {
         return this.wordsList;
      }
 
-    // public Set<String> handleInputAsSet(String filePath, String pattern) { }
+    public Set<String> handleInputAsSet(String filePath, String pattern) {
+        try(Scanner sc = new Scanner(new File(filePath))){
+            sc.useDelimiter(pattern);
+            while(sc.hasNext()){
+                this.wordsSet.add(sc.next().toLowerCase());
+            }
+        }catch(IOException e){
+            System.out.println("Cannot found the file.");
+        }
+
+        return this.wordsSet;
+     }
 
     // public void handleOutput(String outputPath, int range, List<String> data){ }
 }
