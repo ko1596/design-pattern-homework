@@ -64,6 +64,8 @@ public class WordFrequencyManager implements IWordFrequencyManager {
         }
         else if(order.equals("des")){
             handler.handleOutput(outputPath, range, getWordFrequency(SortOrder.DESCENDING));
+        }else{
+            throw new WordFrequencyException("The order should be \"asc\" or \"des\".");
         }
     }
 
