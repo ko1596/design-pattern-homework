@@ -1,5 +1,6 @@
 package org.ntutssl.termfrequency;
 
+import java.util.ArrayList;
 import java.util.Hashtable;
 import java.util.List;
 import java.util.Map;
@@ -28,24 +29,33 @@ public class WordFrequencyManagerStream implements IWordFrequencyManager {
 
     @Override
     public List<String> getWordFrequency(SortOrder order) {
+        List<String> outputList = new ArrayList<>();
+
         switch (order) {
             case ASCENDING:
-                
-                break;
+                this.words.entrySet().stream()
+                    .sorted(Map.Entry.<String, Integer>comparingByValue())
+                    .forEachOrdered(x -> outputList.add(x.getKey() + ": " + x.getValue() + "\n"));
+                return outputList;
+        case DESCENDING:
+                this.words.entrySet().stream()
+                    .sorted(Map.Entry.<String, Integer>comparingByValue().reversed())
+                    .forEachOrdered(x -> outputList.add(x.getKey() + ": " + x.getValue() + "\n"));
 
-            case DESCENDING:
-
-                break;
+                return outputList;
 
             default:
-                break;
+                return null;
         }
-        return null;
     }
 
     @Override
     public void output(String outputPath, String order, int range, IOHandler handler) {
-        // TODO Auto-generated method stub
-        
+        if(order.equals("asc") ){
+            handler.handleOutput(outputPath, range, getWordFrequency(SortOrder.ASCENDING));
+        }
+        else if(order.equals("des")){
+            handler.handleOutput(outputPath, range, getWordFrequency(SortOrder.DESCENDING));
+        }
     }
 }
