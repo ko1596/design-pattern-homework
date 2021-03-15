@@ -36,14 +36,14 @@ public class WordFrequencyManagerStream implements IWordFrequencyManager {
             this.words.entrySet().stream()
             .sorted(Map.Entry.<String, Integer>comparingByValue())
             .forEachOrdered(x -> outputList.add(x.getKey() + ": " + x.getValue() + "\n"));
-            return outputList;
         }
         else{
             this.words.entrySet().stream()
             .sorted(Map.Entry.<String, Integer>comparingByValue().reversed())
             .forEachOrdered(x -> outputList.add(x.getKey() + ": " + x.getValue() + "\n"));
-            return outputList;
         }
+        return outputList;
+
 
     }
 

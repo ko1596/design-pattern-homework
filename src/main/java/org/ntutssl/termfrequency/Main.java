@@ -6,6 +6,6 @@ public class Main {
         IStopWordManager swm = new StopWordManager(args[0],ioHandler);
         IDataStorageManager dsm = new DataStorageManager(args[1],ioHandler);
         IWordFrequencyManager wfm = new WordFrequencyManagerStream();
-        new WordFrequencyController(ioHandler, swm, dsm, swm).run(args[4], Integer.parseInt(args[3]) , args[2]);;
+        new WordFrequencyController(ioHandler, swm, dsm, wfm).run(args[4], Integer.parseInt(args[3]) , args[2]);;
      }
 }
