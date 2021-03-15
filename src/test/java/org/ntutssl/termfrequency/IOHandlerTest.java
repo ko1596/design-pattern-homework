@@ -1,5 +1,6 @@
 package org.ntutssl.termfrequency;
 
+import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 
 import java.io.File;
@@ -96,6 +97,18 @@ public class IOHandlerTest {
         IOHandler ioh = new IOHandler();
         Set<String> test_set_string = ioh.handleInputAsSet("input/pride-and-prejudice.txt", "[\\W_]+");
         assertTrue(test_set_string.contains("ebooks"));
+    }
+
+    @Test(expected = WordFrequencyException.class)
+    public void test_set_file_not_found(){
+        IOHandler ioh = new IOHandler();
+        ioh.handleInputAsSet("input/notfile", "[\\W_]+");
+    }
+
+    @Test(expected = WordFrequencyException.class)
+    public void test_list_file_not_found(){
+        IOHandler ioh = new IOHandler();
+        ioh.handleInputAsList("input/notfile", "[\\W_]+");
     }
 
     @Test
