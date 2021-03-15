@@ -50,10 +50,14 @@ public class IOHandler {
     public void handleOutput(String outputPath, int range, List<String> data){
         File file = new File(outputPath);
         try(BufferedWriter fw = new BufferedWriter(new OutputStreamWriter(new FileOutputStream(file, false), "UTF-8"));) {
-            
-            for(int i=0;i<range;i++){
-                fw.append(data.get(i));
+            if(data.isEmpty()){
+                fw.append("");
+            }else{
+                for(int i=0;i<range;i++){
+                    fw.append(data.get(i));
+                }
             }
+            
             
             fw.flush(); // 全部寫入緩存中的內容
         }catch (Exception e) {
