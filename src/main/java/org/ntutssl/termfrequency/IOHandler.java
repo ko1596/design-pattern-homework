@@ -13,38 +13,32 @@ import java.util.Set;
 
 public class IOHandler {
 
-    private List<String> wordsList;
-    private Set<String> wordsSet;
-
-    public IOHandler() {
-        this.wordsList = new ArrayList<>();
-        this.wordsSet = new HashSet<>();
-     }
-
     public List<String> handleInputAsList(String filePath, String pattern) {
+        List<String> wordsList = new ArrayList<>();
         try(Scanner sc = new Scanner(new File(filePath))){
             sc.useDelimiter(pattern);
             while(sc.hasNext()){
-                this.wordsList.add(sc.next().toLowerCase());
+                wordsList.add(sc.next().toLowerCase());
             }
         }catch(IOException e){
             throw new WordFrequencyException("File not found.",e);
         }
 
-        return this.wordsList;
+        return wordsList;
      }
 
     public Set<String> handleInputAsSet(String filePath, String pattern) {
+        Set<String> wordsSet = new HashSet<>();
         try(Scanner sc = new Scanner(new File(filePath))){
             sc.useDelimiter(pattern);
             while(sc.hasNext()){
-                this.wordsSet.add(sc.next().toLowerCase());
+                wordsSet.add(sc.next().toLowerCase());
             }
         }catch(IOException e){
             throw new WordFrequencyException("File not found.",e);
         }
 
-        return this.wordsSet;
+        return wordsSet;
      }
 
     public void handleOutput(String outputPath, int range, List<String> data){
@@ -61,7 +55,6 @@ public class IOHandler {
             
             fw.flush(); // 全部寫入緩存中的內容
         }catch (Exception e) {
-            System.out.println(outputPath + range + data);
             throw new WordFrequencyException(e.getMessage(),e);
         }
 

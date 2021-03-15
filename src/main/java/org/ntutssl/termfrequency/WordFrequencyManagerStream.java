@@ -20,7 +20,6 @@ public class WordFrequencyManagerStream implements IWordFrequencyManager {
         }else{
             this.words.put(word, 1);
         }
-        System.out.println(word);
      }
 
     public int getNumOfWords() {

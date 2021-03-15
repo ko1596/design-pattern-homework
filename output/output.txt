@@ -1,2 +1,10 @@
-cat: 3
-dog: 2
+imperfectly: 1
+violated: 1
+accurate: 1
+narrowest: 1
+imitated: 1
+subsequent: 1
+individually: 1
+calls: 1
+grain: 1
+oaks: 1

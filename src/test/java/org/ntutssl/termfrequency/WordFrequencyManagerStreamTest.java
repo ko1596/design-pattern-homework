@@ -34,7 +34,7 @@ public class WordFrequencyManagerStreamTest {
         // wfms.incrementCount("cat");
         // wfms.incrementCount("cat");
         // wfms.incrementCount("cat");
-        wfms.output("output/2output.txt", "asc", 2, ioh);
+        wfms.output("output/output2.txt", "asc", 2, ioh);
 
         try(Scanner sc = new Scanner(new File("output/output2.txt"))){
             sc.useDelimiter("\n");

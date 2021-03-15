@@ -33,7 +33,14 @@ public class WordFrequencyManagerTest {
         wfm.incrementCount("cat");
         wfm.incrementCount("cat");
         wfm.incrementCount("cat");
-        wfm.output("output/output.txt", "des", 2, ioh);
+        wfm.incrementCount("pig");
+        wfm.incrementCount("pig");
+        wfm.incrementCount("pig");
+        wfm.incrementCount("pig");
+        wfm.incrementCount("pig");
+        wfm.incrementCount("pig");
+        wfm.incrementCount("pig");
+        wfm.output("output/output.txt", "asc", 3, ioh);
 
         try(Scanner sc = new Scanner(new File("output/output.txt"))){
             sc.useDelimiter("\n");
