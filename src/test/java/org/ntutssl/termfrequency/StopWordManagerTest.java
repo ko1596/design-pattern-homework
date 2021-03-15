@@ -41,4 +41,33 @@ public class StopWordManagerTest {
         StopWordManager swm = new StopWordManager("input/stop_words.txt",ioh);
         assertTrue(swm.isStopWordSet("your"));
     }
+    @Test
+    public void test_is_not_a_stop_word(){
+        IOHandler ioh = new IOHandler();
+        StopWordManager swm = new StopWordManager("input/stop_words.txt",ioh);
+        assertTrue(!swm.isStopWordSet("1234"));
+    }
+    @Test
+    public void test_compare_efficiency_between_list_and_set(){
+        IOHandler ioh = new IOHandler();
+        StopWordManager swm = new StopWordManager("input/stop_words.txt",ioh);
+        long startTimeList = System.nanoTime();
+        assertTrue(swm.isStopWordList("me"));
+        assertTrue(swm.isStopWordList("your"));
+        long endTimeList = System.nanoTime();
+
+        long startTimeSet = System.nanoTime();
+        assertTrue(swm.isStopWordSet("me"));
+        assertTrue(swm.isStopWordSet("your"));
+        long endTimeSet = System.nanoTime();
+
+        assertTrue(endTimeSet - startTimeSet< endTimeList - startTimeList);
+
+    }
+    @Test
+    public void test_single_character_should_be_a_stop_word(){
+        IOHandler ioh = new IOHandler();
+        StopWordManager swm = new StopWordManager("input/stop_words.txt",ioh);
+        assertTrue(swm.isStopWordSet("s"));
+    }
  }
