@@ -33,12 +33,12 @@ public class WordFrequencyManagerStream implements IWordFrequencyManager {
 
         if(order==SortOrder.ASCENDING){
             this.words.entrySet().stream()
-            .sorted(Map.Entry.<String, Integer>comparingByValue())
+            .sorted(Map.Entry.<String, Integer>comparingByValue().reversed())
             .forEachOrdered(x -> outputList.add(x.getKey() + ": " + x.getValue() + "\n"));
         }
         else{
             this.words.entrySet().stream()
-            .sorted(Map.Entry.<String, Integer>comparingByValue().reversed())
+            .sorted(Map.Entry.<String, Integer>comparingByValue())
             .forEachOrdered(x -> outputList.add(x.getKey() + ": " + x.getValue() + "\n"));
         }
         return outputList;
