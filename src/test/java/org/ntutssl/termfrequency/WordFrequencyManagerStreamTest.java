@@ -29,12 +29,12 @@ public class WordFrequencyManagerStreamTest {
         IOHandler ioh = new IOHandler();
         List<String> read_data = new ArrayList<>();
         WordFrequencyManagerStream wfms = new WordFrequencyManagerStream();
-        wfms.incrementCount("map");
         wfms.incrementCount("word");
+        wfms.incrementCount("map");
         // wfms.incrementCount("cat");
         // wfms.incrementCount("cat");
         // wfms.incrementCount("cat");
-        wfms.output("output/output2.txt", "asc", 2, ioh);
+        wfms.output("output/output2.txt", "des", 2, ioh);  //des asc
 
         try(Scanner sc = new Scanner(new File("output/output2.txt"))){
             sc.useDelimiter("\n");

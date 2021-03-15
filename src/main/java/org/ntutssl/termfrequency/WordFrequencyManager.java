@@ -3,7 +3,7 @@ package org.ntutssl.termfrequency;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
-import java.util.Hashtable;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -13,7 +13,7 @@ public class WordFrequencyManager implements IWordFrequencyManager {
     private Map<String, Integer> words;
     
     public WordFrequencyManager() {
-        this.words = new Hashtable<>();
+        this.words = new HashMap<>();
     }
 
     public void incrementCount(String word) {
@@ -30,51 +30,34 @@ public class WordFrequencyManager implements IWordFrequencyManager {
      }
 
 
-    //  public List<String> getWordFrequency(SortOrder order) {
-    //      List<Map.Entry<String, Integer>> list = new ArrayList<>(this.words.entrySet());
-    //      List<String> outputList = new ArrayList<>();
+     public List<String> getWordFrequency(SortOrder order) {
+         List<Map.Entry<String, Integer>> list = new ArrayList<>(this.words.entrySet());
+         List<String> outputList = new ArrayList<>();
  
-    //      if(order==SortOrder.ASCENDING){
-    //          Collections.sort(list, new Comparator<Map.Entry<String, Integer>>(){
-    //              @Override
-    //              public int compare(Map.Entry<String, Integer> o1, Map.Entry<String, Integer> o2){
-    //                  return o1.getValue().compareTo(o2.getValue());
-    //              }
-    //          });
-    //      }
-    //      else if(order==SortOrder.DESCENDING){
-    //          Collections.sort(list, new Comparator<Map.Entry<String, Integer>>(){
-    //              @Override
-    //              public int compare(Map.Entry<String, Integer> o1, Map.Entry<String, Integer> o2){
-    //                  return o2.getValue().compareTo(o1.getValue());
-    //              }
-    //          });
-    //      }
+         if(order==SortOrder.ASCENDING){
+             Collections.sort(list, new Comparator<Map.Entry<String, Integer>>(){
+                 @Override
+                 public int compare(Map.Entry<String, Integer> o1, Map.Entry<String, Integer> o2){
+                     return o1.getValue().compareTo(o2.getValue());
+                 }
+             });
+         }
+         else if(order==SortOrder.DESCENDING){
+             Collections.sort(list, new Comparator<Map.Entry<String, Integer>>(){
+                 @Override
+                 public int compare(Map.Entry<String, Integer> o1, Map.Entry<String, Integer> o2){
+                     return o2.getValue().compareTo(o1.getValue());
+                 }
+             });
+         }
  
-    //      for(Map.Entry<String, Integer> map: list){
-    //          outputList.add(map.getKey() + ": " + map.getValue() + "\n");
-    //      }
+         for(Map.Entry<String, Integer> map: list){
+             outputList.add(map.getKey() + ": " + map.getValue() + "\n");
+         }
          
-    //      return outputList;
+         return outputList;
  
-    //  }
-    public List<String> getWordFrequency(SortOrder order) {
-        List<Map.Entry> list = new ArrayList<>(this.words.entrySet());
-        List<String> sortKey = new ArrayList<>();
-        
-        Comparator<Map.Entry> sortByValue =(e1,e2)->{ 
-            if(order.equals(SortOrder.ASCENDING)){
-                return (Integer.parseInt(String.valueOf(e1.getValue()))-Integer.parseInt(String.valueOf(e2.getValue())));
-            }
-            return (Integer.parseInt(String.valueOf(e2.getValue())) - Integer.parseInt(String.valueOf(e1.getValue())));
-        };
-
-        Collections.sort(list, sortByValue);
-        for(Map.Entry e : list){
-            sortKey.add(e.getKey()+": " +e.getValue()+"\n");
-        }
-        return sortKey;
-    }
+     }
 
     public void output(String outputPath, String order, int range, IOHandler handler) {
         if(getNumOfWords()==0){

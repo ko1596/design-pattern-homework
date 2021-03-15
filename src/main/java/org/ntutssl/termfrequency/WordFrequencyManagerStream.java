@@ -1,7 +1,7 @@
 package org.ntutssl.termfrequency;
 
 import java.util.ArrayList;
-import java.util.Hashtable;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -11,7 +11,7 @@ public class WordFrequencyManagerStream implements IWordFrequencyManager {
     private Map<String, Integer> words;
     
     public WordFrequencyManagerStream() {
-        this.words = new Hashtable<>();
+        this.words = new HashMap<>();
     }
 
     public void incrementCount(String word) {
