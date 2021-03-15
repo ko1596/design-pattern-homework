@@ -57,6 +57,7 @@ public class IOHandler {
             
             fw.flush(); // 全部寫入緩存中的內容
         }catch (Exception e) {
+            System.out.println(outputPath + range + data);
             throw new WordFrequencyException(e.getMessage(),e);
         }
 
