@@ -1,24 +1,32 @@
 package org.ntutssl.document;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Article implements Document {  
-  public Article(String topic, int level) {  }
+  private String topic;
+  private List<Document> allDocumenList = new ArrayList<>();
+  private int level;
+  public Article(String topic, int level) {
+    this.topic = topic;
+    this.level = level;
+  }
 
   public Document getContent(int index) {
-    String text = "asd";
-    Document a = new Title(text);
-    return a;
+    return allDocumenList.get(index);
   }
 
   public String getText() {
-    String text = "asd";
-    return text;
+    return topic;
   }
 
   @Override
   public int getLevel() { 
-    return 123;
+    return level;
    }
   
   @Override
-  public void add(Document document) {  }
+  public void add(Document document) {
+    this.allDocumenList.add(document);
+  }
 }
