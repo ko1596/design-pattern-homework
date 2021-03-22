@@ -29,7 +29,7 @@ public class Article implements Document {
   public void add(Document document) {
     if(document.getClass() == Article.class){
       if(document.getLevel() < this.level){
-        new DocumentException("Invalid action: add an article with lower level into article");
+        throw new DocumentException("Invalid action: add an article with lower level into article");
       }else this.allDocumenList.add(document);
     }else this.allDocumenList.add(document);
     
