@@ -27,8 +27,10 @@ public class Article implements Document {
   
   @Override
   public void add(Document document) {
-    if(document.getClass() == Article.class && document.getLevel() < this.level){
-      new DocumentException("Invalid action: add an article with lower level into article");
+    if(document.getClass() == Article.class){
+      if(document.getLevel() < this.level){
+        new DocumentException("Invalid action: add an article with lower level into article");
+      }else this.allDocumenList.add(document);
     }else this.allDocumenList.add(document);
     
   }
