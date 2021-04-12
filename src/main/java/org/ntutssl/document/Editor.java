@@ -13,7 +13,7 @@ public class Editor {
   }
 
   public void add(Document document) {
-    this.editor.add(document);
+    this.allEditor.add(document);
   }
 
   public int size() {
