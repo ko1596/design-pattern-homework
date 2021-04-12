@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
-public class FindContentVisitor {  
+public class FindContentVisitor implements Visitor{  
 
   private List<Document> documents;
   private String target;
@@ -32,9 +32,8 @@ public class FindContentVisitor {
     }
 
     Iterator<Document> it = article.iterator();
-    while(it.hasNext()){
-      it.next().accept(this);
-    }
+    while(it.hasNext()) it.next().accept(this);
+    
   }
   
   public List<Document> getResult() {
