@@ -20,8 +20,8 @@ public class Title implements Document {
   }
 
   @Override
-  public void accept(Visitor visitor) {
-    visitor.visitTitle(this);
+  public void accept(FindContentVisitor findContentVisitor) {
+    findContentVisitor.visitTitle(this);
   }
 
   @Override

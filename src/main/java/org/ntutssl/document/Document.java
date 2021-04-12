@@ -21,7 +21,7 @@ public interface Document {
 
   public String getText();
 
-  public void accept(Visitor visitor);
+  public void accept(FindContentVisitor findContentVisitor);
 
   public String toString();
 }
