@@ -6,6 +6,7 @@ public class Title implements Document {
   private int size;
 
   public Title(String text, int size) {
+    if(size < 1 || size > 6) throw new DocumentException("Invalid Input: Must be between 0~6");
     this.text = text;
     this.size = size;
   }
