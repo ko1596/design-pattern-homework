@@ -3,7 +3,7 @@ package org.ntutssl.document;
 public class Title implements Document {
 
   private String text;
-  private Integer size;
+  private int size;
 
   public Title(String text, int size) {
     this.text = text;
@@ -16,7 +16,7 @@ public class Title implements Document {
 
   @Override
   public int getSize() {
-    return this.getSize();
+    return this.size;
   }
 
   @Override

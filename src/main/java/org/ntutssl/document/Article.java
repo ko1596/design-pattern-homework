@@ -7,7 +7,8 @@ import java.util.List;
 public class Article implements Document {
   private String topic;
   private List<Document> allDocumenList = new ArrayList<>();
-  private int level;
+  private int level,countArticle;
+
   public Article(String topic, int level) {
     this.topic = topic;
     this.level = level;
