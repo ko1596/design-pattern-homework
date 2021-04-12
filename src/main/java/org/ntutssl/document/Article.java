@@ -7,8 +7,7 @@ import java.util.List;
 public class Article implements Document {
   private String topic;
   private List<Document> allDocumenList = new ArrayList<>();
-  private int level,countArticle;
-
+  private int level;
   public Article(String topic, int level) {
     this.topic = topic;
     this.level = level;
@@ -26,7 +25,7 @@ public class Article implements Document {
   @Override
   public void add(Document document) {
     if(document.getClass() == Article.class){
-      if(document.getLevel() < this.level){
+      if(document.getLevel() <= this.level){
         throw new DocumentException("Invalid action: add an article with lower level into article");
       }else this.allDocumenList.add(document);
     }else this.allDocumenList.add(document);

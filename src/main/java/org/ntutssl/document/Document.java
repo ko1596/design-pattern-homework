@@ -1,6 +1,7 @@
 package org.ntutssl.document;
 
 import java.util.Iterator;
+import java.util.NoSuchElementException;
 
 public interface Document {  
   public default int getLevel() {
@@ -12,7 +13,7 @@ public interface Document {
   }
   
   public default Iterator<Document> iterator() {
-    throw new DocumentException("Invalid action: Iterator is null");
+    throw new NoSuchElementException("Invalid action: Iterator is null");
   }
   
   public default int getSize() {
