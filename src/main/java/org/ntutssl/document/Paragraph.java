@@ -13,7 +13,7 @@ public class Paragraph implements Document {
   }
 
   @Override
-  public void accept(Visitor visitor) {
+  public void accept(Visitor<Document> visitor) {
     visitor.visitParagraph(this);
   }
 

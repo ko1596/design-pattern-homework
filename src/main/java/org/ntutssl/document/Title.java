@@ -21,7 +21,7 @@ public class Title implements Document {
   }
 
   @Override
-  public void accept(Visitor visitor) {
+  public void accept(Visitor<Document> visitor) {
     visitor.visitTitle(this);
   }
 

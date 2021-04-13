@@ -38,7 +38,7 @@ public class Article implements Document {
   }
 
   @Override
-  public void accept(Visitor visitor) {
+  public void accept(Visitor<Document> visitor) {
     visitor.visitArticle(this);
   }
 
