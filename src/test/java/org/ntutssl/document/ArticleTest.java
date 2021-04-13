@@ -1,6 +1,5 @@
 package org.ntutssl.document;
 
-import static org.junit.Assert.assertArrayEquals;
 import static org.junit.Assert.assertEquals;
 
 import java.util.Iterator;
