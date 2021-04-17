@@ -23,7 +23,9 @@ public class NullIteratorTest {
     public void test_next_element(){
         LocalDate lc = LocalDate.of(2000, 2, 18);
         Workforce team = new Team("good teams", lc , true);
+        Workforce employee = new Individual("Tom", 30000, lc, true);
+        team.add(employee);
         Iterator<Workforce> it = team.iterator();
-        assertEquals(team, it.next());
+        assertEquals(employee, it.next());
     }
  }

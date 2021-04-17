@@ -1,6 +1,7 @@
 package org.ntutssl.organization;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
@@ -15,6 +16,7 @@ public class Team implements Workforce {
     this.name = name;
     this.startDate = startDate;
     this.isInHouse = isInHouse;
+    this.workforce = new ArrayList<>();
   }
 
   public String getName() {

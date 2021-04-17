@@ -43,4 +43,22 @@ public class TeamTest {
         assertEquals("Type:\tTeam (in-house)\nName:\tgood teams\nStart date:\t2000-02-18\n", lv.getResult());
     }
 
+    @Test
+    public void test_getSize(){
+        LocalDate lc = LocalDate.of(2000, 2, 18);
+        Workforce team = new Team("good teams", lc , true);
+        Workforce team2 = new Team("good teams", lc , true);
+        Workforce team3 = new Team("good teams", lc , true);
+        team.add(team2);
+        team.add(team3);
+        assertEquals(2, team.getSize());
+    }
+
+    @Test(expected = OrganizationException.class)
+    public void test_get_salary_should_throw_exception(){
+        LocalDate lc = LocalDate.of(2000, 2, 18);
+        Workforce team = new Team("good teams", lc , true);
+        team.getSalary();
+    }
+
  }
