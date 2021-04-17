@@ -1,14 +1,16 @@
-package org.ntutssl.organization;
+package org.ntutssl.document;
 
 import java.util.Iterator;
 import java.util.NoSuchElementException;
 
-public class NullIterator implements Iterator<Workforce>{
+public class NullIterator implements Iterator<Document>{
+  @Override
   public boolean hasNext() {
     return false;
   }
 
-  public Workforce next() {
+  @Override
+  public Document next() {
     throw new NoSuchElementException("Do not have element.");
   }
 }

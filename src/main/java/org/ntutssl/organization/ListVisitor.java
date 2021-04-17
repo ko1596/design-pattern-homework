@@ -1,6 +1,10 @@
 package org.ntutssl.organization;
 
+import java.util.List;
+
 public class ListVisitor implements Visitor<String> {
+
+  private List<Workforce> workforce;
 
   public ListVisitor() {
 
@@ -15,6 +19,6 @@ public class ListVisitor implements Visitor<String> {
   }
 
   public String getResult() {
-
+    return "workforce";
   }
 }
