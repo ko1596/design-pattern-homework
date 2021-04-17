@@ -127,7 +127,9 @@ public class InstructionHandler {
 		}else if(instruction.equals("add title")) {
 			article.add(addTitleInstruction());
 			System.out.println("Title added to the article.");
-		}else{
+		}else if(instruction.equals("exit")) {
+			return false;
+		}else {
 			System.out.println("Invalid instruction");
 			return true;
 		}
