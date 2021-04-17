@@ -45,7 +45,7 @@ public class Individual implements Workforce {
     buffer += "Name:\t\t" + getName() + "\n";
     buffer += "Salary:\t\t" + getSalary() + "\n";
     buffer += "Start date:\t\t" + getStartDate().toString() + "\n";
-    return "aa";
+    return buffer;
   }
 
   public <T> void accept(Visitor<T> visitor) {

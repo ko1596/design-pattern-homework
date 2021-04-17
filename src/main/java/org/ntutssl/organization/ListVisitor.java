@@ -10,11 +10,11 @@ public class ListVisitor implements Visitor<String> {
   }
 
   public void visitTeam(Team team) {
-    result += team.toString();
-    Iterator<Workforce> it = team.iterator();
-    while(it.hasNext()){
-      it.next().accept(this);
-    }
+    result += team.toString(0);
+    // Iterator<Workforce> it = team.iterator();
+    // while(it.hasNext()){
+    //   it.next().accept(this);
+    // }
   }
 
   public void visitIndividual(Individual individual) {

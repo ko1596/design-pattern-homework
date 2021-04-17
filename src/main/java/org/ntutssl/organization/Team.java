@@ -34,11 +34,17 @@ public class Team implements Workforce {
     for (int i = 0; i < indentCount;i++){
       buffer += " ";
     }
-    buffer += "Type:\t\tTeam ";
+    buffer += "Type:\tTeam ";
     if(isInHouse()) buffer += "(in-house)\n";
     else buffer += "(outsourcing)\n";
-    buffer += "Name:\t\t" + getName() + "\n";
-    buffer += "Start date:\t\t" + getStartDate().toString() + "\n";
+    for (int i = 0; i < indentCount;i++){
+      buffer += " ";
+    }
+    buffer += "Name:\t" + getName() + "\n";
+    for (int i = 0; i < indentCount;i++){
+      buffer += " ";
+    }
+    buffer += "Start date:\t" + getStartDate().toString() + "\n";
     return buffer;
   }
 

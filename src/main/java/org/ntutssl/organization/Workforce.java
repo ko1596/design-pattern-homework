@@ -15,19 +15,18 @@ public interface Workforce {
   
     public <T> void accept(Visitor<T> visitor);
   
-    public default void add(Workforce employee) {//
+    public default void add(Workforce employee) {
         throw new OrganizationException("Invalid action: add");
     }
   
-    public default Iterator<Workforce> iterator() {//
+    public default Iterator<Workforce> iterator() {
         throw new NoSuchElementException("Invalid action: Iterator is null");
     }
   
-    public default int getSize() {//
+    public default int getSize() {
         throw new OrganizationException("Invalid action: add");
     }
-    public default int getSalary() {//
+    public default int getSalary() {
         throw new OrganizationException("Invalid action: add");
-
     }
  }
