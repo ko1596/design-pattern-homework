@@ -64,4 +64,16 @@ public class IndividualTest {
         Iterator<Workforce> it = individual.iterator();
         it.hasNext();
     }
+
+    @Test(expected = OrganizationException.class)
+    public void test_salary_too_low_should_throw_exception(){
+        LocalDate lc = LocalDate.of(2000, 2, 18);
+        Workforce individual = new Individual("Tom", 5, lc, true);
+    }
+
+    @Test(expected = OrganizationException.class)
+    public void test_name_is_empty_should_throw_exception(){
+        LocalDate lc = LocalDate.of(2000, 2, 18);
+        Workforce individual = new Individual("", 30000, lc, true);
+    }
  }

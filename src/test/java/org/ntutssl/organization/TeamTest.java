@@ -61,4 +61,10 @@ public class TeamTest {
         team.getSalary();
     }
 
+    @Test(expected = OrganizationException.class)
+    public void test_name_is_empty_should_throw_exception(){
+        LocalDate lc = LocalDate.of(2000, 2, 18);
+        Workforce team = new Team("", lc , true);
+    }
+
  }

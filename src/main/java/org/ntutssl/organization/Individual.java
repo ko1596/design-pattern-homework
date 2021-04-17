@@ -20,6 +20,12 @@ public class Individual implements Workforce {
     this.salary = salary;
     this.startDate = startDate;
     this.isInHouse = isInHouse;
+    if(salary<24000) {
+      throw new OrganizationException("Your salary is set too low.");
+    }
+    if(name.equals("")){
+      throw new OrganizationException("Your name is empty.");
+    }
   }
 
   public String getName() {
@@ -42,8 +48,17 @@ public class Individual implements Workforce {
     buffer += "Type:\tIndividual ";
     if(isInHouse()) buffer += "(in-house)\n";
     else buffer += "(not in-house)\n";
+    for (int i = 0; i < indentCount;i++){
+      buffer += " ";
+    }
     buffer += "Name:\t" + getName() + "\n";
+    for (int i = 0; i < indentCount;i++){
+      buffer += " ";
+    }
     buffer += "Salary:\t" + getSalary() + "\n";
+    for (int i = 0; i < indentCount;i++){
+      buffer += " ";
+    }
     buffer += "Start date:\t" + getStartDate().toString() + "\n";
     return buffer;
   }

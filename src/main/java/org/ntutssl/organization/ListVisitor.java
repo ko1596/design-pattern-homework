@@ -4,21 +4,24 @@ import java.util.Iterator;
 
 public class ListVisitor implements Visitor<String> {
   private String result;
-
+  private int countTeam;
   public ListVisitor() {
     this.result = "";
   }
 
   public void visitTeam(Team team) {
-    result += team.toString(0);
-    // Iterator<Workforce> it = team.iterator();
-    // while(it.hasNext()){
-    //   it.next().accept(this);
-    // }
+    countTeam++;
+    result += team.toString(countTeam-1);
+    Iterator<Workforce> it = team.iterator();
+    while(it.hasNext()){
+      it.next().accept(this);
+    }
+    countTeam--;
+    
   }
 
   public void visitIndividual(Individual individual) {
-    result += individual.toString(0);
+    result += individual.toString(countTeam);
   }
 
   public String getResult() {

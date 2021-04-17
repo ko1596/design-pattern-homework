@@ -17,6 +17,9 @@ public class Team implements Workforce {
     this.startDate = startDate;
     this.isInHouse = isInHouse;
     this.workforce = new ArrayList<>();
+    if(name.equals("")){
+      throw new OrganizationException("Your name is empty.");
+    }
   }
 
   public String getName() {
