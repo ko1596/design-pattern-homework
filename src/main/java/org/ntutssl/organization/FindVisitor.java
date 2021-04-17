@@ -15,11 +15,25 @@ public class FindVisitor implements Visitor{
   }
 
   public void visitTeam(Team team) {
-   
+   condition.apply(team);
+   if(true){
+     if(orderBy.equals("ASC")){
+       workforces.add(team);
+     }else{
+       workforces.add(team);
+     }
+   }
   }
 
   public void visitIndividual(Individual individual) {
-    
+    condition.apply(individual);
+    if(true){
+      if(orderBy.equals("ASC")){
+        workforces.add(individual);
+      }else{
+        workforces.add(individual);
+      }
+    }
   }
 
   public List<Workforce> getResult() {
