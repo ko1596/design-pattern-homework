@@ -76,4 +76,10 @@ public class IndividualTest {
         LocalDate lc = LocalDate.of(2000, 2, 18);
         Workforce individual = new Individual("", 30000, lc, true);
     }
+
+    @Test(expected = OrganizationException.class)
+    public void test_name_contain_number_or_non_word_throw_exception(){
+        LocalDate lc = LocalDate.of(2000, 2, 18);
+        Workforce individual = new Individual("aa", 30000, lc, true);
+    }
  }

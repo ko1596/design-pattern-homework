@@ -11,7 +11,7 @@ public class ListVisitor implements Visitor<String> {
 
   public void visitTeam(Team team) {
     countTeam++;
-    result += team.toString(countTeam-1);
+    result += team.toString((countTeam-1)*2);
     Iterator<Workforce> it = team.iterator();
     while(it.hasNext()){
       it.next().accept(this);
@@ -21,7 +21,7 @@ public class ListVisitor implements Visitor<String> {
   }
 
   public void visitIndividual(Individual individual) {
-    result += individual.toString(countTeam);
+    result += individual.toString(countTeam*2);
   }
 
   public String getResult() {

@@ -26,6 +26,9 @@ public class Individual implements Workforce {
     if(name.equals("")){
       throw new OrganizationException("Your name is empty.");
     }
+    if(name.equals("[\\W_]+")){
+      throw new OrganizationException("Your name is contain number or non-word.");
+    }
   }
 
   public String getName() {
