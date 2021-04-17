@@ -24,9 +24,9 @@ public interface Workforce {
     }
   
     public default int getSize() {
-        throw new OrganizationException("Invalid action: add");
+        throw new OrganizationException("Invalid action: getSize");
     }
     public default int getSalary() {
-        throw new OrganizationException("Invalid action: add");
+        throw new OrganizationException("Invalid action: getSalary");
     }
  }

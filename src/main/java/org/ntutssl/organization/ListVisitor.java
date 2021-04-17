@@ -18,7 +18,7 @@ public class ListVisitor implements Visitor<String> {
   }
 
   public void visitIndividual(Individual individual) {
-    result += individual.toString();
+    result += individual.toString(0);
   }
 
   public String getResult() {

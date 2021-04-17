@@ -39,12 +39,12 @@ public class Individual implements Workforce {
     for (int i = 0; i < indentCount;i++){
       buffer += " ";
     }
-    buffer += "Type:\t\tIndividual ";
+    buffer += "Type:\tIndividual ";
     if(isInHouse()) buffer += "(in-house)\n";
     else buffer += "(not in-house)\n";
-    buffer += "Name:\t\t" + getName() + "\n";
-    buffer += "Salary:\t\t" + getSalary() + "\n";
-    buffer += "Start date:\t\t" + getStartDate().toString() + "\n";
+    buffer += "Name:\t" + getName() + "\n";
+    buffer += "Salary:\t" + getSalary() + "\n";
+    buffer += "Start date:\t" + getStartDate().toString() + "\n";
     return buffer;
   }
 
