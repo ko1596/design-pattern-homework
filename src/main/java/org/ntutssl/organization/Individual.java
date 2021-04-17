@@ -31,10 +31,20 @@ public class Individual implements Workforce {
   }
 
   public boolean isInHouse() {
-    return isInHouse;
+    return this.isInHouse;
   }
 
   public String toString(int indentCount) {
+    String buffer = "";
+    for (int i = 0; i < indentCount;i++){
+      buffer += " ";
+    }
+    buffer += "Type:\t\tIndividual ";
+    if(isInHouse()) buffer += "(in-house)\n";
+    else buffer += "(not in-house)\n";
+    buffer += "Name:\t\t" + getName() + "\n";
+    buffer += "Salary:\t\t" + getSalary() + "\n";
+    buffer += "Start date:\t\t" + getStartDate().toString() + "\n";
     return "aa";
   }
 
