@@ -1,14 +1,20 @@
 package org.ntutssl.termfrequency;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class StopWordManager implements EventListener {
 
-  public StopWordManager(EventManager eventManager) { }
-
-  public List<String> getStopWords() {
-    return null;
+  private List<String> stopWord;
+  public StopWordManager(EventManager eventManager) {
+    stopWord = new ArrayList<>();
    }
 
-  public void onEvent(EventType eventType, String event) { }
+  public List<String> getStopWords() {
+    return stopWord;
+   }
+
+  public void onEvent(EventType eventType, String event) {
+
+  }
 }
