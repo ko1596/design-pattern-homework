@@ -1,14 +1,16 @@
 package org.ntutssl.termfrequency;
 
-import java.util.HashMap;
 import java.util.Map;
+
+import com.google.common.collect.ArrayListMultimap;
+import com.google.common.collect.Multimap;
 
 public class EventManager {
 
-  private Map<EventType, EventListener> eventMap;
+  private Multimap<EventType, EventListener> eventMap;
 
   public EventManager() { 
-    eventMap = new HashMap<>();
+    eventMap = ArrayListMultimap.create();
   }
 
   public void subscribe(EventType eventType, EventListener listener) { 
@@ -16,7 +18,7 @@ public class EventManager {
   }
 
   public void publish(EventType eventType, String event) {
-    for(Map.Entry<EventType, EventListener> i:eventMap.entrySet()){
+    for(Map.Entry<EventType, EventListener> i:eventMap.entries()){
       if(i.getKey()==eventType){
         i.getValue().onEvent(eventType, event);
       }
