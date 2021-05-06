@@ -35,6 +35,7 @@ public class StopWordManager implements EventListener {
       case VALIDATE:
         if(!stopWord.contains(event))
           eventManager.publish(EventType.COUNT, event);
+        System.out.println("VALIDATE");
         break;
 
       default:

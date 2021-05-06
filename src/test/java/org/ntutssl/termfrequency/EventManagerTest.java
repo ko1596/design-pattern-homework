@@ -11,7 +11,7 @@ public class EventManagerTest implements EventListener{
     }
     
     @Test
-    public void test_START(){
+    public void test_subscribe_and_publish(){
         EventManager em = new EventManager();
         em.subscribe(EventType.START, this);
         em.publish(EventType.START, "");
