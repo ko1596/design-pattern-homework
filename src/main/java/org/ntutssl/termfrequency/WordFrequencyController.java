@@ -1,6 +1,6 @@
 package org.ntutssl.termfrequency;
 
-public class WordFrequencyController {
+public class WordFrequencyController implements EventListener {
   
   public WordFrequencyController(EventManager eventManager) { }
 
