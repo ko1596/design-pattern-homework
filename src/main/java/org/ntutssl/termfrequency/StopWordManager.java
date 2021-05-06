@@ -30,6 +30,9 @@ public class StopWordManager implements EventListener {
         }catch(IOException e){
             throw new WordFrequencyException("File not found.");
         }
+        for(int i = 98;i<123;i++){
+          if(i!=105) stopWord.add(Character.toString((char)i));
+        }
         break;
       
       case VALIDATE:

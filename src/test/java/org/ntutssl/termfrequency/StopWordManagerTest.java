@@ -16,7 +16,7 @@ public class StopWordManagerTest implements EventListener{
         EventManager eventManager = new EventManager();
         StopWordManager swm = new StopWordManager(eventManager);
         swm.onEvent(EventType.LOAD, "");
-        assertTrue(swm.getStopWords().contains("a"));
+        assertTrue(swm.getStopWords().contains("z"));
     }
     @Test
     public void not_StopWord(){
