@@ -13,6 +13,8 @@ public class StopWordManager implements EventListener {
   public StopWordManager(EventManager eventManager) {
     stopWord = new ArrayList<>();
     this.eventManager = eventManager;
+    this.eventManager.subscribe(EventType.LOAD, this);
+    this.eventManager.subscribe(EventType.VALIDATE, this);
    }
 
   public List<String> getStopWords() {
@@ -38,7 +40,6 @@ public class StopWordManager implements EventListener {
       case VALIDATE:
         if(!stopWord.contains(event))
           eventManager.publish(EventType.COUNT, event);
-        System.out.println("VALIDATE");
         break;
 
       default:
