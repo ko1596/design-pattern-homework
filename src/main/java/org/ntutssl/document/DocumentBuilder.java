@@ -9,15 +9,41 @@ package org.ntutssl.document;
  */
 class DocumentBuilder {
 
-  public DocumentBuilder() { }
+  private Stack<Document> stack;
+  private Document document;
 
-  public DocumentBuilder buildTitle(String text, int size) { }
+  public DocumentBuilder() {
+    this.document = null;
+    this.stack = new Stack();
+   }
 
-  public DocumentBuilder buildParagraph(String text) { }
+   public DocumentBuilder buildTitle(String text, int size) {
+    if(this.stack.empty()) document= new Title(text,size);
+    else this.stack.peek().add(new Title(text,size));
+    return this;
+  }
 
-  public DocumentBuilder startBuildArticle(String topic, int level) { }
+  public DocumentBuilder buildParagraph(String text){
+    if(this.stack.empty()) document=new Paragraph(text);
+    else this.stack.peek().add(new Paragraph(text));
+    return this;
+  }
 
-  public DocumentBuilder endBuildArticle() { }
+  public DocumentBuilder startBuildArticle(String topic, int level){
+    this.stack.push(new Article(topic,level));
+    return this;
+  }
 
-  public Document getResult() { }
+  public DocumentBuilder endBuildArticle(){
+    if(this.stack.size() == 1)  document =this.stack.pop();
+    else {
+      Document temp = stack.pop();
+      this.stack.peek().add(temp);
+    }
+    return this;
+  }
+
+  public Document getResult(){
+    return document;
+  }
 }
