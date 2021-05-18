@@ -15,9 +15,12 @@ public class FindContentConsumer implements Consumer<Document> {
    }
 
    public void accept(Document document){
-    if(document.getClass().equals(Title.class)) visitTitle((Title)document);
-    if(document.getClass().equals(Paragraph.class)) visitParagraph((Paragraph)document);
-    if(document.getClass().equals(Article.class)) visitArticle((Article)document);
+    if(document.getClass().equals(Title.class)) 
+      visitTitle((Title)document);
+    if(document.getClass().equals(Paragraph.class)) 
+      visitParagraph((Paragraph)document);
+    if(document.getClass().equals(Article.class)) 
+      visitArticle((Article)document);
   }
 
   private void visitParagraph(Paragraph paragraph) {
