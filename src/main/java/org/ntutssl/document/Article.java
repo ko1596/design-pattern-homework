@@ -25,8 +25,7 @@ public class Article implements Document {
   public void add(Document document) {
     try{
       int addLevel = document.getLevel();
-      if(addLevel > this.level)
-        this.contentList.add(document);
+      if(addLevel > this.level) this.contentList.add(document);
       else throw new DocumentException("Invalid Input: The level should be positive or higher than the level of the current article");
     }catch(DocumentException e){
       if(e.getMessage().equals("getLevel function is not found"))
