@@ -1,17 +1,29 @@
 package org.ntutssl.document;
 
-import java.util.Iterator;
 import com.google.gson.JsonObject;
-import com.google.gson.JsonParser;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
 
 class DocumentParser {
-  public DocumentParser() { }
-  
-  /**
-   * parse a JsonObject as a Document
-   * @param jObj the json object to be parsed
-   */
-  public Document parse(JsonObject jObj) { }
+
+  private DocumentBuilder documentBuilder;
+
+  public DocumentParser() {
+    documentBuilder = new DocumentBuilder();
+   }
+
+  public Document parse(JsonObject jObj) {
+    if(jObj.get("type").getAsString().equals("title"))
+      documentBuilder.buildTitle(jObj.get("text").getAsString(), jObj.get("size").getAsInt());
+    else if(jObj.get("type").getAsString().equals("paragraph"))
+      documentBuilder.buildParagraph(jObj.get("text").getAsString());
+    else if(jObj.get("type").getAsString().equals("article")){
+      documentBuilder.startBuildArticle(jObj.get("text").getAsString(),jObj.get("level").getAsInt());
+      JsonArray ja = jObj.get("contents").getAsJsonArray();
+      for (JsonElement je : ja)
+        this.parse(je.getAsJsonObject());
+      documentBuilder = documentBuilder.endBuildArticle();
+    }
+    return documentBuilder.getResult();
+   }
 }

@@ -17,9 +17,13 @@ public class Editor {
 
   private List<Document> documentList;
 
-  public Editor() { }
+  public Editor() {
+    this.documentList = new ArrayList<>();
+   }
 
-  public void importDocumentFromJsonFile(String filePath) { }
+  public void importDocumentFromJsonFile(String filePath) {
+    
+   }
 
   public void exportDocumentAsHtmlFile(String outputPath) { }
 
