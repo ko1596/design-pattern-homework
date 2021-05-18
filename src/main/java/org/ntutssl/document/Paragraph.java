@@ -14,11 +14,6 @@ public class Paragraph implements Document {
 
   @Override
   public String toString() {
-    String string = "";
-    string += "Paragraph\t";
-    string += "text: ";
-    string += this.text;
-    string += "\n";
-    return string;
+    return "Paragraph\ttext: " + this.text + "\n";
   }
 }

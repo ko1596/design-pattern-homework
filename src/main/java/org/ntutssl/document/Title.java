@@ -20,15 +20,6 @@ public class Title implements Document {
 
   @Override
   public String toString() {
-    String string = "";
-    string += "Title\t\t";
-    string += "text: ";
-    string += this.text;
-    string += "\n";
-    string += "\t\tsize: ";
-    string += this.size;
-    string += "\n";
-    return string;
-
+    return "Title\t\ttext: " + this.text + "\n\t\tsize: " + this.size + "\n";
   }
 }
