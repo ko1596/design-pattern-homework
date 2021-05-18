@@ -1,5 +1,7 @@
 package org.ntutssl.document;
 
+import java.util.Stack;
+
 /**
  * Document builder helps you build a Document object.
  * 
@@ -7,6 +9,7 @@ package org.ntutssl.document;
  * DocumentBuilder itself, so you can build a large object using
  * a single statement.
  */
+
 class DocumentBuilder {
 
   private Stack<Document> stack;

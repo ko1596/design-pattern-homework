@@ -1,5 +1,9 @@
 package org.ntutssl.document;
 
+import java.util.List;
+import java.util.function.Consumer;
+import java.util.Iterator;
+
 public class FindContentConsumer implements Consumer<Document> {
   
   /**

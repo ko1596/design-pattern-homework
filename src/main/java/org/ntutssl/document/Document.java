@@ -1,4 +1,8 @@
 package org.ntutssl.document;
+
+import java.util.Iterator;
+import java.util.NoSuchElementException;
+
 public interface Document {
   public default int getLevel() {
     throw new DocumentException("getLevel function is not found");
