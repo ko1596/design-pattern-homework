@@ -35,15 +35,29 @@ public class HtmlOutputConsumer implements Consumer<Document> {
    }
 
   private void visitParagraph(Paragraph paragraph){
-    this.result.add("<p>" + paragraph.getText() + "</p>\n");
+    this.string+="<p>";
+    this.string+=paragraph.getText();
+    this.string+="</p>";
+    this.string+="\n";
+    this.result.add(this.string);
+    this.string="";
   }
 
   private void visitTitle(Title title) {
-    this.result.add("<h" + String.valueOf(title.getSize()) + ">" + title.getText() + "</h" + String.valueOf(title.getSize()) + ">\n");
+    this.string+="<h"+String.valueOf(title.getSize())+">";
+    this.string+=title.getText();
+    this.string+="</h"+String.valueOf(title.getSize())+">";
+    this.string+="\n";
+    this.result.add(this.string);
+    this.string="";
   }
   private void visitArticle(Article article) {
-    this.result.add("<article topic='" + article.getText() + "'>\n");
-
+    this.string+="<article topic='";
+    this.string+=article.getText();
+    this.string+="'>";
+    this.string+="\n";
+    this.result.add(string);
+    this.string="";
     Iterator<Document> it = article.iterator();
     while(it.hasNext()){
       Document context = it.next();
@@ -51,8 +65,8 @@ public class HtmlOutputConsumer implements Consumer<Document> {
         this.accept(context);
       }
     for(int i = 0 ;i<article.getLevel()-1 ;i++) this.string+="  ";
-    
-    this.string+="</article>\n";
+    this.string+="</article>";
+    this.string+="\n";
     this.result.add(this.string);
     this.string="";
   }
