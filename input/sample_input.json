@@ -1,0 +1,52 @@
+[
+  {
+    "type": "title",
+    "text": "Object-Oriented Programming",
+    "size": 1
+  },
+  {
+    "type": "paragraph",
+    "text": "This course discusses an overview of the object-oriented programming paradigm."
+  },
+  {
+    "type": "article",
+    "text": "Course Object-Oriented Programming",
+    "level": 1,
+    "contents": [
+      {
+        "type": "title",
+        "text": "Information",
+        "size": 2
+      },
+      {
+        "type": "paragraph",
+        "text": "Professor: YC Cheng"
+      },
+      {
+        "type": "article",
+        "text": "Introduction",
+        "level": 2,
+        "contents": [
+          {
+            "type": "title",
+            "text": "What you will learn in this class?",
+            "size": 3
+          },
+          {
+            "type": "paragraph",
+            "text": "problem solving, C++, engineering practices"
+          }
+        ]
+      },
+      {
+        "type": "title",
+        "text": "References",
+        "size": 2
+      },
+      {
+        "type": "paragraph",
+        "text": "https://www.cplusplus.com/"
+      }
+    ]
+  }
+]

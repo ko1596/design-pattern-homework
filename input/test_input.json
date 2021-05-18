@@ -1,0 +1,27 @@
+[
+  {
+    "type": "title",
+    "text": "I'm a simple title",
+    "size": 1
+  },
+  {
+    "type": "paragraph",
+    "text": "I'm a simple paragraph"
+  },
+  {
+    "type": "article",
+    "text": "I'm a simple article",
+    "level": 1,
+    "contents": [
+      {
+        "type": "title",
+        "text": "inner title",
+        "size": 2
+      },
+      {
+        "type": "paragraph",
+        "text": "inner paragraph"
+      }
+    ]
+  }
+]
