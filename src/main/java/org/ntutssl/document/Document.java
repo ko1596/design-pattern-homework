@@ -19,6 +19,10 @@ public interface Document {
   public default int getSize() {
     throw new DocumentException("getSize function is not found");
   }
+
+  public default void remove(Document document) {
+    throw new DocumentException("remove function is not found");
+  }
   
   public String getText();
 
