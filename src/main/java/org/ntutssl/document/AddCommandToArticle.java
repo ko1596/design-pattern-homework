@@ -18,8 +18,10 @@ public class AddCommandToArticle implements Command {
   }
 
   public void undo() {
+    target.remove(document);
   }
 
   public void redo() {
+    target.add(document);
   }
 }
