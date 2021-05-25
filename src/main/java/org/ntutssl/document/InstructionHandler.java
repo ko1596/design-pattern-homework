@@ -6,10 +6,12 @@ public class InstructionHandler {
 
 	private Editor editor;
 	private Scanner input;
+	private CommandManager commandManager;
 
 	public InstructionHandler(Editor editor) {
 		this.editor = editor;
 		this.input = new Scanner(System.in);
+		this.commandManager = new CommandManager();
 	}
 
 	public void run() {
@@ -20,40 +22,43 @@ public class InstructionHandler {
 
 	private void printEditorInstructions() {
 		System.out.println("Please enter the following instruction to start editing:");
-		System.out.println(" 1. 'add title': to add a title to the editor");
-		System.out.println(" 2. 'add paragraph': to add a paragraph to the editor");
-		System.out.println(" 3. 'add article': to add an article to the editor");
-		System.out.println(" 4. 'find content': to find the specific string in the editor");
-		System.out.println(" 5. 'import json': to import Document into editor from json file");
-		System.out.println(" 6. 'output html': to transfer the text to html format");
-		System.out.println(" 7. 'exit': to exit the program");
+		System.out.println("  1. 'add title': to add a title to the editor");
+		System.out.println("  2. 'add paragraph': to add a paragraph to the editor");
+		System.out.println("  3. 'add article': to add an article to the editor");
+		System.out.println("  4. 'find content': to find the specific string in the editor");
+		System.out.println("  5. 'import json': to import Document into editor from json file");
+		System.out.println("  6. 'output html': to transfer the text to html format");
+		System.out.println("  7. 'undo': to undo the previous 'add' instruction in the editor");
+		System.out.println("  8. 'redo': to redo the previous undo instruction in the editor");
+		System.out.println("  9. 'exit': to exit the program");
 	}
 	
 	private boolean handleEditorInstructions(String instruction) {
 		if(instruction.equals("add title")) {
 			try {
-				this.editor.add(addTitleInstruction());
+				commandManager.executeCmd(new AddCommandToEditor(editor, addTitleInstruction()));
 				System.out.println("Title added to the editor.");
 			} catch (Exception e) {
-				System.out.println("Invalid input: Must be between 0~6");
+				System.out.println("Invalid Input: The size should be in range 1 to 6");
 			}			
 
 		}else if(instruction.equals("add paragraph")) {
-			this.editor.add(addParagraphInstruction());
+			commandManager.executeCmd(new AddCommandToEditor(editor, addParagraphInstruction()));
 			System.out.println("Paragraph added to the editor.");
 
 		}else if(instruction.equals("add article")){
 			try {
+				CommandManager articleCommandManager = new CommandManager();
 				Article art = (Article) addArticleInstruction(0);
 				if(art == null) return true;
 				do{
 					printArticleInstructions();
-				}while(handleArticleInstructions(input.nextLine(), art));
+				}while(handleArticleInstructions(input.nextLine(), art, articleCommandManager));
 
-				editor.add(art);
+				commandManager.executeCmd(new AddCommandToEditor(editor, art));
 				System.out.println("Article added to the article.");
 			} catch (Exception e) {
-				System.out.println("Invalid input: LEVEL must be a positive integer");
+				System.out.println("Invalid Input: The level should be positive or higher than the level of the current article");
 			}
 
 		}else if(instruction.equals("find content")){
@@ -66,6 +71,10 @@ public class InstructionHandler {
 			return false;
 		}else if(instruction.equals("import json")){
 			this.importJsonInstruction();
+		}else if(instruction.equals("undo")){
+			commandManager.undoCmd();
+		}else if(instruction.equals("undo")){
+			commandManager.redoCmd();
 		}else{
 			System.out.println("Invalid instruction");
 			return true;
@@ -106,28 +115,35 @@ public class InstructionHandler {
 	}
 
 	private void printArticleInstructions() {
-		System.out.println("Please enter the following instruction to edit the article: ");
-		System.out.println(" 1. 'add title': to add a title to the article");
-		System.out.println(" 2. 'add paragraph': to add a paragraph to the article");
-		System.out.println(" 3. 'add article': to add an article to the article");
-		System.out.println(" 4. 'exit': to exit the process");
+		System.out.println("Please enter the following instruction to edit the article");
+		System.out.println("  1. 'add title': to add a title to the article");
+		System.out.println("  2. 'add paragraph': to add a paragraph to the article");
+		System.out.println("  3. 'add article': to add an article to the article");
+		System.out.println("  4. 'undo': to undo the previous 'add' instruction");
+		System.out.println("  5. 'redo': to redo the previous undo instruction");
+		System.out.println("  6. 'exit': to exit the process");
 	}
 
-	private boolean handleArticleInstructions(String instruction, Article article) {
+	private boolean handleArticleInstructions(String instruction, Article article, CommandManager articleCommandManager) {
 		if(instruction.equals("add article")) {
+			CommandManager newArticleCommandManager = new CommandManager();
 			Article articleTemp = (Article) addArticleInstruction(article.getLevel());
 			if(articleTemp == null) return true;
 			do{
 				printArticleInstructions();
-			}while(handleArticleInstructions(input.nextLine(), articleTemp));
-			article.add(articleTemp);
+			}while(handleArticleInstructions(input.nextLine(), articleTemp, newArticleCommandManager));
+			articleCommandManager.executeCmd(new AddCommandToArticle(article, articleTemp));
 			System.out.println("Article added to the article.");
 		}else if(instruction.equals("add paragraph")) {
-			article.add(addParagraphInstruction());
+			articleCommandManager.executeCmd(new AddCommandToArticle(article, addParagraphInstruction()));
 			System.out.println("Paragraph added to the article.");
 		}else if(instruction.equals("add title")) {
-			article.add(addTitleInstruction());
+			articleCommandManager.executeCmd(new AddCommandToArticle(article, addTitleInstruction()));
 			System.out.println("Title added to the article.");
+		}else if (instruction.equals("undo")){
+			articleCommandManager.undoCmd();
+		}else if (instruction.equals("redo")){
+			articleCommandManager.redoCmd();
 		}else if (instruction.equals("exit")){
 			return false;
 		}else{
