@@ -47,4 +47,9 @@ public class Article implements Document {
   public String toString() {
     return "Article\t\ttopic: " + this.topic + "\n\t\tlevel: "+ this.level + "\n";
    }
+
+   @Override
+  public void remove(Document document) {
+    contentList.remove(document);
+  }
 }
