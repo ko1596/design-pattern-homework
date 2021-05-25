@@ -40,9 +40,8 @@ public class FindContentConsumer implements Consumer<Document> {
   }
 
   private void visitArticle(Article article) {
-    if(article.getText().toLowerCase().contains(this.target) && (this.target.length() > 0 || article.getText().length() == 0)) {
+    if(article.getText().toLowerCase().contains(this.target) && (this.target.length() > 0 || article.getText().length() == 0))
       this.result.add(article);
-    }
 
     Iterator<Document> it = article.iterator();
     while(it.hasNext())
