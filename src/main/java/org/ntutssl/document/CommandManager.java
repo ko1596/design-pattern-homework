@@ -20,7 +20,7 @@ public class CommandManager {
   public void undoCmd() {
     if (!usedCommands.isEmpty()){
       undoCommands.push(usedCommands.peek());
-      undoCommands.pop().undo();
+      usedCommands.pop().undo();
     }else{
       throw new DocumentException("No command can be undid.");
     }
@@ -29,7 +29,7 @@ public class CommandManager {
   public void redoCmd() {
     if (!undoCommands.isEmpty()){
       usedCommands.push(undoCommands.peek());
-      usedCommands.pop().redo();
+      undoCommands.pop().redo();
     }else{
       throw new DocumentException("No command can be redid.");
     }
