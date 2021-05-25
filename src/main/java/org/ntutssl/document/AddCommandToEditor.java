@@ -21,5 +21,6 @@ public class AddCommandToEditor implements Command {
   }
 
   public void redo() {
+    target.add(document);
   }
 }
