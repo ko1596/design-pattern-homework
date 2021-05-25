@@ -64,4 +64,8 @@ public class Editor {
   public Iterator<Document> iterator() {
     return documentList.iterator();
    }
+
+   public void remove(Document document) {
+    documentList.remove(document);
+  }
 }
