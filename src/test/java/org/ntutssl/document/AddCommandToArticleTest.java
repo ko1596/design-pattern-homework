@@ -33,5 +33,6 @@ public class AddCommandToArticleTest {
         commandToArticle.execute();
         commandToArticle.redo();
         assertEquals(paragraph,article.iterator().next());
+        assertEquals(paragraph,article.iterator().next());
     }
 }
