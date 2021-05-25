@@ -1,7 +1,5 @@
 package org.ntutssl.document;
 
-import java.util.Iterator;
-import java.util.List;
 import java.util.Scanner;
 
 public class InstructionHandler {
