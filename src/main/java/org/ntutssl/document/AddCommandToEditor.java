@@ -7,6 +7,7 @@ public class AddCommandToEditor implements Command {
    */
   private Editor target;
   private Document document;
+  
   public AddCommandToEditor(Editor target, Document document) {
     this.target = target;
     this.document = document;
