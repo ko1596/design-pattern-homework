@@ -15,8 +15,10 @@ public class EventManager {
    }
 
   public <T> void publish(Event<T> event) {
-    for(EventListener eventListener : this.eventMap.get(event.type()))
-      eventListener.onEvent(event);
+    if(this.eventMap.get(event.type())!=null){
+      for(EventListener eventListener : this.eventMap.get(event.type()))
+        eventListener.onEvent(event);
+    }
   }
 
   // SINGLETON implementation below
@@ -26,8 +28,12 @@ public class EventManager {
   }
 
   public static EventManager getInstance() {
-    if (instance == null){
-      instance = new EventManager();
+    if (instance == null) {
+      synchronized(EventManager.class) {
+        if (instance == null) {
+          instance = new EventManager();
+        }
+      }
     }
     return instance;
   }

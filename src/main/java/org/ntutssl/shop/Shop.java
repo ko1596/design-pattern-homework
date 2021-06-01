@@ -45,17 +45,28 @@ public class Shop implements EventListener {
    * @param event Event of Goods to check
    */
   private void checkStock(Event<Goods> event) {
-    
+    if(shop.containsKey(event.data()) && shop.get(event.data()) > event.count()){
+      EventManager.getInstance().publish(new GoodsEvent(EventType.ADD_TO_CART, event.data(), event.count()));
+    }
    }
 
   /**
    * deduct stock after user complete purchase
    * @param event Event of Goods to be deducted
    */
-  private void purchase(Event<Goods> event) { }
+  private void purchase(Event<Goods> event) {
+    EventManager.getInstance().publish(new GoodsEvent(EventType.ADD_TO_CART, event.data(), event.count())); 
+   }
 
   /**
    * show stocks of this shop
    */
-  private void listShop() { }
+  private void listShop() {
+    System.out.print(String.format("%-4s%-22s%-40s%-8s%-6s\n", "ID","name", "description", "price", "count"));
+    System.out.print("--------------------------------------------------------------------------------\n");
+
+    for(Goods goods : shop.keySet())
+      System.out.print(String.format("%-4s%-22s%-40s%-8s%-6s\n", goods.id(),goods.name(), goods.description(), goods.price(), shop.get(goods)));
+    
+   }
 }
