@@ -9,5 +9,38 @@ public class Merchandise implements Goods {
    * @param desc
    * @param price goods price which should not be negative
    */
-  public Merchandise(int id, String name, String desc, double price) { }
+  private int ids;
+  private String names;
+  private double prices;
+  private String descriptions;
+
+  public Merchandise(int id, String name, String desc, double price) {
+    this.ids = id;
+    this.names = name;
+    this.descriptions = desc;
+    this.prices = price;
+   }
+   @Override
+  public int id() {
+    // TODO Auto-generated method stub
+    return ids;
+  }
+
+  @Override
+  public double price() {
+    // TODO Auto-generated method stub
+    return prices;
+  }
+
+  @Override
+  public String name() {
+    // TODO Auto-generated method stub
+    return names;
+  }
+
+  @Override
+  public String description() {
+    // TODO Auto-generated method stub
+    return descriptions;
+  }
 }
