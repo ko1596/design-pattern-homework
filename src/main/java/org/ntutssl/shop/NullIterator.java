@@ -1,8 +1,17 @@
 package org.ntutssl.shop;
 
+import java.util.Iterator;
+import java.util.NoSuchElementException;
+
 public class NullIterator implements Iterator<Goods> {
   
-  public Goods next() { }
+  @Override
+  public Goods next() {
+    throw new NoSuchElementException("NoSuchElementException");
+   }
 
-  public boolean hasNext() { }
+  @Override
+  public boolean hasNext() {
+    return false;
+   }
 }
