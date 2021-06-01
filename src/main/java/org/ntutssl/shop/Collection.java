@@ -1,5 +1,4 @@
 package org.ntutssl.shop;
-
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
@@ -12,52 +11,42 @@ public class Collection implements Goods {
    * @param name
    * @param desc
    */
-  private int ids;
-  private String names;
-  private String descriptions;
-  private List<Goods> collitionLists;
-
+  private int id;
+  private String name;
+  private String desc;
+  private List<Goods> goods;
   public Collection(int id, String name, String desc) {
-    this.ids = id;
-    this.names = name;
-    this.descriptions = desc;
-    this.collitionLists = new ArrayList<>();
-   }
+    this.id = id;
+    this.name = name;
+    this.desc = desc;
+    this.goods = new ArrayList<>();
+  }
 
-  @Override
-  public int id() {
-    // TODO Auto-generated method stub
-    return ids;
+  public int id(){
+    return id;
+  }
+
+  public double price(){
+    double price = 0;
+    for(Goods g : goods) price+=g.price();
+    return price;
+  }
+  
+  public String name(){
+    return name;
+  }
+
+  public String description(){
+    return desc;
   }
 
   @Override
-  public double price() {
-    // TODO Auto-generated method stub
-    double prices = 0;
-    return prices;
+  public void add(Goods good){
+    this.goods.add(good);
   }
 
   @Override
-  public String name() {
-    // TODO Auto-generated method stub
-    return names;
-  }
-
-  @Override
-  public String description() {
-    // TODO Auto-generated method stub
-    return descriptions;
-  }
-
-  @Override
-  public void add(Goods goods) {
-      // TODO Auto-generated method stub
-      Goods.super.add(goods);
-  }
-
-  @Override
-  public Iterator<Goods> iterator() {
-      // TODO Auto-generated method stub
-      return this.collitionLists.iterator();
+  public Iterator<Goods> iterator(){
+    return this.goods.iterator();
   }
 }

@@ -64,7 +64,6 @@ public class Shop implements EventListener {
   private void listShop() {
     System.out.print(String.format("%-4s%-22s%-40s%-8s%-6s\n", "ID","name", "description", "price", "count"));
     System.out.print("--------------------------------------------------------------------------------\n");
-
     for(Goods goods : shop.keySet())
       System.out.print(String.format("%-4s%-22s%-40s%-8s%-6s\n", goods.id(),goods.name(), goods.description(), goods.price(), shop.get(goods)));
     
