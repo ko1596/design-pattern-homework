@@ -46,7 +46,10 @@ public class ShoppingCart implements EventListener {
     if(shopppingCart.isEmpty())
       System.out.print("Your shopping cart is empty.\n");
     else{
-      System.out.print(String.format("%-4s%-22s%-40s%-8s%-6s\n", "ID", "name", ""));
+      System.out.print(String.format("%-4s%-22s%-40s%-8s%-6s\n", "ID", "name", "description", "price", "count"));
+      for(Goods goods : shopppingCart.keySet()){
+        System.out.print(String.format("%-4s%-22s%-40s%-8s%-6s\n", goods.id(), goods.name(), goods.description()));
+      }
     }
    }
 }

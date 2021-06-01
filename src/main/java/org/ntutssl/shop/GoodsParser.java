@@ -33,15 +33,6 @@ public class GoodsParser implements EventListener {
   private void importShoppingCartList(Event<String> event) { }
 
   private void importReplenishmentList(Event<String> event) {
-    try(JsonReader jReader = new JsonReader(new InputStreamReader(new FileInputStream(event.data()),"UTF-8")))
-    {
-      JsonArray jArray = JsonParser.parseReader(jReader).getAsJsonArray();
-      for(JsonElement jElement : jArray){
-        EventManager.getInstance().publish(new GoodsEvent<Goods>(EventType.REPLENISH, this.parse(jElement.getAsJsonArray()), 20))
-      }
-    }catch(Exception e){
-      e.printStackTrace();
-    }
    }
 
   private Goods parse(JsonObject jsonObj) {
