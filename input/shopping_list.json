@@ -1,0 +1,102 @@
+[
+  {
+    "type": "merchandise",
+    "id": 1,
+    "name": "apple",
+    "description": "good apple",
+    "price": 0.49,
+    "count": 3
+  },
+  {
+    "type": "collection",
+    "id": 2,
+    "name": "banana bag",
+    "description": "a bag of banana",
+    "count": 1,
+    "contents": [
+      {
+        "type": "merchandise",
+        "id": 13,
+        "name": "banana",
+        "description": "big banana",
+        "price": 0.29
+      }
+    ]
+  },
+  {
+    "type": "merchandise",
+    "id": 3,
+    "name": "cat",
+    "description": "cute cat",
+    "price": 0.49,
+    "count": 2
+  },
+  {
+    "type": "collection",
+    "id": 4,
+    "name": "dog",
+    "description": "a bag of Chihuahuas",
+    "count": 2,
+    "contents": [
+      {
+        "type": "merchandise",
+        "id": 14,
+        "name": "Chihuahua - NO.1",
+        "description": "",
+        "price": 0
+      },
+      {
+        "type": "merchandise",
+        "id": 15,
+        "name": "Chihuahua - NO.2",
+        "description": "",
+        "price": 0
+      }
+    ]
+  },
+  {
+    "type": "merchandise",
+    "id": 5,
+    "name": "egg",
+    "description": "cheap!",
+    "price": 0.05,
+    "count": 4
+  },
+  {
+    "type": "collection",
+    "id": 6,
+    "name": "fruit",
+    "description": "cdesc",
+    "count": 1,
+    "contents": [
+      {
+        "type": "merchandise",
+        "id": 16,
+        "name": "grapes",
+        "description": "",
+        "price": 2.00
+      },
+      {
+        "type": "merchandise",
+        "id": 17,
+        "name": "guava",
+        "description": "",
+        "price": 0.99
+      },
+      {
+        "type": "merchandise",
+        "id": 18,
+        "name": "strawberry",
+        "description": "",
+        "price": 0.99
+      },
+      {
+        "type": "merchandise",
+        "id": 19,
+        "name": "watermelon",
+        "description": "big and sweet",
+        "price": 2.50
+      }
+    ]
+  }
+]

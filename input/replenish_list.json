@@ -1,0 +1,210 @@
+[
+  {
+    "type": "merchandise",
+    "id": 1,
+    "name": "apple",
+    "description": "good apple",
+    "price": 0.49,
+    "count": 100
+  },
+  {
+    "type": "collection",
+    "id": 2,
+    "name": "banana bag",
+    "description": "a bag of banana",
+    "count": 30,
+    "contents": [
+      {
+        "type": "merchandise",
+        "id": 13,
+        "name": "banana",
+        "description": "big banana",
+        "price": 0.29
+      }
+    ]
+  },
+  {
+    "type": "merchandise",
+    "id": 3,
+    "name": "cat",
+    "description": "cute cat",
+    "price": 0.49,
+    "count": 50
+  },
+  {
+    "type": "collection",
+    "id": 4,
+    "name": "dog",
+    "description": "a bag of Chihuahuas",
+    "count": 123,
+    "contents": [
+      {
+        "type": "merchandise",
+        "id": 14,
+        "name": "Chihuahua - NO.1",
+        "description": "",
+        "price": 0
+      },
+      {
+        "type": "merchandise",
+        "id": 15,
+        "name": "Chihuahua - NO.2",
+        "description": "",
+        "price": 0
+      }
+    ]
+  },
+  {
+    "type": "merchandise",
+    "id": 5,
+    "name": "egg",
+    "description": "cheap!",
+    "price": 0.05,
+    "count": 500
+  },
+  {
+    "type": "collection",
+    "id": 6,
+    "name": "fruit",
+    "description": "cdesc",
+    "count": 300,
+    "contents": [
+      {
+        "type": "merchandise",
+        "id": 16,
+        "name": "grapes",
+        "description": "",
+        "price": 2.00
+      },
+      {
+        "type": "merchandise",
+        "id": 17,
+        "name": "guava",
+        "description": "",
+        "price": 0.99
+      },
+      {
+        "type": "merchandise",
+        "id": 18,
+        "name": "strawberry",
+        "description": "",
+        "price": 0.99
+      },
+      {
+        "type": "merchandise",
+        "id": 19,
+        "name": "watermelon",
+        "description": "big and sweet",
+        "price": 2.50
+      }
+    ]
+  },
+  {
+    "type": "merchandise",
+    "id": 7,
+    "name": "pencil",
+    "description": "cheap pencil",
+    "price": 0.29,
+    "count": 1000
+  },
+  {
+    "type": "merchandise",
+    "id": 8,
+    "name": "eraser",
+    "description": "cheap eraser",
+    "price": 0.25,
+    "count": 400
+  },
+  {
+    "type": "merchandise",
+    "id": 9,
+    "name": "pen",
+    "description": "cheat pen",
+    "price": 0.49,
+    "count": 400
+  },
+  {
+    "type": "collection",
+    "id": 10,
+    "name": "stationery pack",
+    "description": "stationery pack",
+    "count": 50,
+    "contents": [
+      {
+        "type": "merchandise",
+        "id": 7,
+        "name": "pencil",
+        "description": "cheap pencil",
+        "price": 0.29
+      },
+      {
+        "type": "merchandise",
+        "id": 8,
+        "name": "eraser",
+        "description": "",
+        "price": 0.25
+      },
+      {
+        "type": "merchandise",
+        "id": 9,
+        "name": "pen",
+        "description": "",
+        "price": 0.49
+      }
+    ]
+  },
+  {
+    "type": "merchandise",
+    "id": 11,
+    "name": "MSI laptop",
+    "description": "superb RGB light up your world",
+    "price": 700.00,
+    "count": 30
+  },
+  {
+    "type": "merchandise",
+    "id": 12,
+    "name": "MacBook Pro",
+    "description": "Small chip. Giant leap.",
+    "price": 1299.00,
+    "count": 10
+  },
+  {
+    "type": "collection",
+    "id": 13,
+    "name": "laptop pack",
+    "description": "laptop pack",
+    "count": 5,
+    "contents": [
+      {
+        "type": "merchandise",
+        "id": 11,
+        "name": "MSI laptop",
+        "description": "superb RGB light up your world",
+        "price": 700.00
+      },
+      {
+        "type": "collection",
+        "id": 20,
+        "name": "peripheral pack",
+        "description": "",
+        "contents": [
+          {
+            "type": "merchandise",
+            "id": 21,
+            "name": "gaming mouse",
+            "description": "",
+            "price": 49.99
+          },
+          {
+            "type": "merchandise",
+            "id": 22,
+            "name": "mechanical keyboard",
+            "description": "",
+            "price": 49.99
+          }
+        ]
+      }
+    ]
+  }
+]
