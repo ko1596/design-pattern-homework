@@ -18,13 +18,8 @@ public class EventManager {
    }
 
   public <T> void publish(Event<T> event) {
-    for(Map.Entry<EventType, EventListener> i:eventMap.entries()){
-      if(i.getKey()==eventType){
-        i.getValue().onEvent(eventType, event);
-      }
-    }
-   }
-   }
+    
+  }
 
   // SINGLETON implementation below
   

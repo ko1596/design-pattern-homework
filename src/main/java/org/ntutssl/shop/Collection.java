@@ -14,7 +14,6 @@ public class Collection implements Goods {
    */
   private int ids;
   private String names;
-  private double prices;
   private String descriptions;
   private List<Goods> collitionLists;
 
@@ -34,6 +33,7 @@ public class Collection implements Goods {
   @Override
   public double price() {
     // TODO Auto-generated method stub
+    double prices = 0;
     return prices;
   }
 
