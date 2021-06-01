@@ -30,9 +30,32 @@ public class GoodsParser implements EventListener {
   /**
    * private methods are not necessary, but you can takce them as reference.
    */
-  private void importShoppingCartList(Event<String> event) { }
+  private void importShoppingCartList(Event<String> event) {
+    try(JsonReader jReader = new JsonReader(new InputStreamReader(new FileInputStream(event.data()),"UTF-8")))
+    {
+        JsonArray jArray = JsonParser.parseReader(jReader).getAsJsonArray();
+        for(JsonElement jElement : jArray){
+            Goods goods = this.parse(jElement.getAsJsonObject());
+            this.count = Integer.parseInt(jElement.getAsJsonObject().get("count").getAsString());
+            EventManager.getInstance().publish(new GoodsEvent(EventType.ADD_TO_CART, goods, this.count));
+        }
+    }catch(Exception e){
+        e.printStackTrace();
+    }
+  }
 
   private void importReplenishmentList(Event<String> event) {
+    try(JsonReader jReader = new JsonReader(new InputStreamReader(new FileInputStream(event.data()),"UTF-8")))
+    {
+        JsonArray jArray = JsonParser.parseReader(jReader).getAsJsonArray();
+        for(JsonElement jElement : jArray){
+            Goods goods = this.parse(jElement.getAsJsonObject());
+            this.count = Integer.parseInt(jElement.getAsJsonObject().get("count").getAsString());
+            EventManager.getInstance().publish(new GoodsEvent(EventType.REPLENISH, goods, this.count));
+        }
+    }catch(Exception e){
+        e.printStackTrace();
+    }
    }
 
   private Goods parse(JsonObject jsonObj) {
