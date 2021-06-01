@@ -6,11 +6,18 @@ import com.google.common.collect.ArrayListMultimap;
 import com.google.common.collect.Multimap;
 
 public class EventManager {
-
+  private static volatile EventManager instance = null;
   private Multimap<EventType, EventListener> eventMap;
   
-  public EventManager() { 
+  private EventManager() { 
     eventMap = ArrayListMultimap.create();
+  }
+
+  public static EventManager getInstance() {
+    if (instance == null){
+      instance = new EventManager();
+    }
+    return instance;
   }
 
   public void subscribe(EventType eventType, EventListener listener) {
@@ -18,8 +25,10 @@ public class EventManager {
    }
 
   public <T> void publish(Event<T> event) {
-    
+    for(Event)
   }
+
+  
 
   // SINGLETON implementation below
   
