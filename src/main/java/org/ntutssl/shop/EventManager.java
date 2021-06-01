@@ -25,7 +25,7 @@ public class EventManager {
    }
 
   public <T> void publish(Event<T> event) {
-    for(Event)
+    
   }
 
   
