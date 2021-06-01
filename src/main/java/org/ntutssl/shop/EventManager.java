@@ -17,7 +17,7 @@ public class EventManager {
   public <T> void publish(Event<T> event) {
     for(EventListener eventListener : this.eventMap.get(event.type()))
       eventListener.onEvent(event);
-  }Ds
+  }
 
   // SINGLETON implementation below
   
