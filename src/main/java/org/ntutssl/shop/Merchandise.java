@@ -15,6 +15,9 @@ public class Merchandise implements Goods {
   private String descriptions;
 
   public Merchandise(int id, String name, String desc, double price) {
+    if(id<0) throw new ShopException("Goods id which should not be negative");
+    if(price<0) throw new ShopException("Goods price which should not be negative");
+    
     this.ids = id;
     this.names = name;
     this.descriptions = desc;
