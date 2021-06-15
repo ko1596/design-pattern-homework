@@ -16,6 +16,7 @@ public class Collection implements Goods {
   private String desc;
   private List<Goods> goods;
   public Collection(int id, String name, String desc) {
+    if(id < 0) throw new ShopException("Goods id which should not be negative");
     this.id = id;
     this.name = name;
     this.desc = desc;
