@@ -18,6 +18,6 @@ public abstract class Event<T> {
   }
 
   public int count() {
-    throw new ShopException("invalid operation");
+    throw new ShopException("count function is not found");
   }
 }
