@@ -36,9 +36,10 @@ public class GoodsParser implements EventListener {
         JsonArray jArray = JsonParser.parseReader(jReader).getAsJsonArray();
         for(JsonElement jElement : jArray){
             Goods goods = this.parse(jElement.getAsJsonObject());
-            this.count = Integer.parseInt(jElement.getAsJsonObject().get("count").getAsString());
-            EventManager.getInstance().publish(new GoodsEvent(EventType.ADD_TO_CART, goods, this.count));
+            count = Integer.parseInt(jElement.getAsJsonObject().get("count").getAsString());
+            EventManager.getInstance().publish(new GoodsEvent(EventType.CHECK_STOCK, goods, count));
         }
+        EventManager.getInstance().publish(new StringEvent(EventType.SORT_CART,""));
     }catch(Exception e){
         e.printStackTrace();
     }
@@ -50,9 +51,10 @@ public class GoodsParser implements EventListener {
         JsonArray jArray = JsonParser.parseReader(jReader).getAsJsonArray();
         for(JsonElement jElement : jArray){
             Goods goods = this.parse(jElement.getAsJsonObject());
-            this.count = Integer.parseInt(jElement.getAsJsonObject().get("count").getAsString());
-            EventManager.getInstance().publish(new GoodsEvent(EventType.REPLENISH, goods, this.count));
+            count = Integer.parseInt(jElement.getAsJsonObject().get("count").getAsString());
+            EventManager.getInstance().publish(new GoodsEvent(EventType.REPLENISH, goods, count));
         }
+        EventManager.getInstance().publish(new StringEvent(EventType.SORT_SHOP,""));
     }catch(Exception e){
         e.printStackTrace();
     }
