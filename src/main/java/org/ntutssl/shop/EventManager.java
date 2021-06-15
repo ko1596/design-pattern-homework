@@ -6,18 +6,22 @@ import com.google.common.collect.ArrayListMultimap;
 import com.google.common.collect.Multimap;
 
 public class EventManager {
-  private static volatile EventManager instance = null;
+  private static EventManager instance;
   private Multimap<EventType, EventListener> eventMap;
 
+  private EventManager() { 
+    eventMap = ArrayListMultimap.create();
+  }
 
   public void subscribe(EventType eventType, EventListener listener) {
     eventMap.put(eventType, listener);
    }
 
   public <T> void publish(Event<T> event) {
-    if(this.eventMap.get(event.type())!=null){
-      for(EventListener eventListener : this.eventMap.get(event.type()))
-        eventListener.onEvent(event);
+    for(Map.Entry<EventType, EventListener> eventEntry: this.eventMap.entries()){
+      if(eventEntry.getKey() != null && eventEntry.getKey() == event.type()){
+        eventEntry.getValue().onEvent(event);
+      }
     }
   }
 
@@ -34,8 +38,8 @@ public class EventManager {
     return instance;
   }
 
-  private EventManager() { 
-    eventMap = ArrayListMultimap.create();
+  static synchronized void reset(){
+    instance = null;
   }
 
 }
