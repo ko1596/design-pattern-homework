@@ -56,9 +56,9 @@ public class PayByBankTransferStrategyTest implements EventListener{
         EventManager em = EventManager.getInstance();
         PayByBankTransferStrategy bank = new PayByBankTransferStrategy();
         em.subscribe(EventType.PRINT_RECEIPT, this);
-        StringEvent event = new StringEvent(EventType.CALCULATE,"100.00");
+        StringEvent event = new StringEvent(EventType.CALCULATE,"50.00");
         em.publish(event);
-        assertEquals(this.printReceiptEvent,"$100.49");
+        assertEquals(this.printReceiptEvent,"$50.49");
         assertEquals("Enter the bank code: Enter the account number: Pay successfully!\n",outStream.toString());
         stream.reset();
         System.setIn(originIn);
