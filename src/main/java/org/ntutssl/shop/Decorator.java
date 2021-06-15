@@ -7,6 +7,7 @@ public abstract class Decorator implements Goods {
    * constructor
    * @param goods goods to be decorated
    */
+  
   public Decorator(Goods goods) {
     this.goods = goods;
   }

@@ -23,10 +23,6 @@ public class EventManager {
 
   // SINGLETON implementation below
   
-  private EventManager() { 
-    eventMap = ArrayListMultimap.create();
-  }
-
   public static EventManager getInstance() {
     if (instance == null) {
       synchronized(EventManager.class) {
@@ -37,4 +33,9 @@ public class EventManager {
     }
     return instance;
   }
+
+  private EventManager() { 
+    eventMap = ArrayListMultimap.create();
+  }
+
 }
