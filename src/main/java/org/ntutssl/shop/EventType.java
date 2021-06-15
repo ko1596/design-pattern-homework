@@ -32,6 +32,16 @@ public enum EventType {
   PAY,
 
   /**
+   * calculate total price with different strategy
+   */
+  CALCULATE,
+
+  /**
+   * print the receipt
+   */
+  PRINT_RECEIPT,
+
+  /**
    * purchase goods in the cart from a shop
    */
   PURCHASE,
@@ -44,5 +54,9 @@ public enum EventType {
   /**
    * list shop
    */
-  LIST_SHOP
+  LIST_SHOP,
+
+  SORT_CART,
+  
+  SORT_SHOP,
 }
