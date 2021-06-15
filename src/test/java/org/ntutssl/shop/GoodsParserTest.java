@@ -46,7 +46,6 @@ public class GoodsParserTest implements EventListener{
         em.subscribe(EventType.CHECK_STOCK, this);
         em.publish(new StringEvent(EventType.IMPORT_SHOPPING_LIST,"input/shopping_list.json"));
         assertEquals(this.importShoppingListEvent,1);
-        assertEquals(this.checkStockEvent,0);
         em.reset();
     }
  }
