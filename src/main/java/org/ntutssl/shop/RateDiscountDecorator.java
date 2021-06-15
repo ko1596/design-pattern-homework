@@ -7,13 +7,28 @@ public class RateDiscountDecorator extends Decorator {
    * @param goods goods to be decorated
    * @param rate discount rate, which should be [0, 1)
    */
-  public RateDiscountDecorator(Goods goods, double rate) { }
 
-  public int id() { }
+  private double rate;
 
-  public double price() { }
+  public RateDiscountDecorator(Goods goods, double rate) {
+    super(goods);
+    if(rate<0 || rate>=1) throw new ShopException("Discount rate, which should be [0, 1)");
+    this.rate = rate;
+   }
 
-  public String name() { }
+  public int id() {
+    return goods.id();
+  }
 
-  public String description() { }
+  public double price() {
+    return goods.price()*rate;
+  }
+
+  public String name() {
+    return goods.name();
+  }
+
+  public String description() {
+    return goods.description();
+  }
 }
