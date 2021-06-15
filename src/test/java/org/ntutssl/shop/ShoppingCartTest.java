@@ -25,7 +25,7 @@ public class ShoppingCartTest implements EventListener{
     }
 
     @Test
-    public void test_list_empty_shop(){
+    public void test_list_empty_shopping_cart(){
         ByteArrayOutputStream stream = new ByteArrayOutputStream();
         PrintStream printStream = new PrintStream(stream);
         PrintStream originalOut = System.out;
@@ -42,7 +42,7 @@ public class ShoppingCartTest implements EventListener{
     }
 
     @Test
-    public void test_check_stock_event_with_existent_goods(){
+    public void test_add_collection_and_list(){
         ByteArrayOutputStream stream = new ByteArrayOutputStream();
         PrintStream printStream = new PrintStream(stream);
         PrintStream originalOut = System.out;
@@ -67,7 +67,7 @@ public class ShoppingCartTest implements EventListener{
     }
 
     @Test
-    public void test_purchase_event_with_existent_goods(){
+    public void test_add_merchandise_and_list(){
         ByteArrayOutputStream stream = new ByteArrayOutputStream();
         PrintStream printStream = new PrintStream(stream);
         PrintStream originalOut = System.out;
@@ -99,7 +99,36 @@ public class ShoppingCartTest implements EventListener{
     }
 
     @Test
-    public void test_receive_multiple_replenish_event(){
+    public void test_add_collection_containing_merchandise_collection_and_list(){
+        ByteArrayOutputStream stream = new ByteArrayOutputStream();
+        PrintStream printStream = new PrintStream(stream);
+        PrintStream originalOut = System.out;
+        System.setOut(printStream);
+        ShoppingCart shoppingCart = new ShoppingCart();
+        EventManager em = EventManager.getInstance();
+        Collection collection = new Collection(1, "collection", "c");
+        Merchandise merchandise = new Merchandise(2, "merchandise", "m", 1.4);
+        Collection collection2 = new Collection(3, "collection2", "c");
+        collection.add(merchandise);
+        collection2.add(merchandise);
+        collection.add(collection2);
+        GoodsEvent goodsEvent = new GoodsEvent(EventType.ADD_TO_CART,collection,1);
+        StringEvent stringEvent = new StringEvent(EventType.LIST_CART,"");
+        em.publish(goodsEvent);
+        em.publish(stringEvent);
+        String line1 = "================================================================================\n";
+        String line2 = String.format("%-4s%-22s%-40s%-8s%-6s\n", "ID","name", "description", "price", "count");
+        String line3 = "--------------------------------------------------------------------------------\n";
+        String line4 = String.format("%-4s%-22s%-40s%-8s%-6s\n", 1, "collection", "c", 2.80, 1);
+        String line5 = "================================================================================\n";
+        assertEquals(line1+line2+line3+line4+line5,stream.toString());
+        System.setOut(originalOut);
+        stream.reset();
+        em.reset();
+    }
+
+    @Test
+    public void test_pay_should_publish_calculate_event(){
         ShoppingCart shoppingCart = new ShoppingCart();
         EventManager em = EventManager.getInstance();
         StringEvent stringEvent = new StringEvent(EventType.PAY,"");

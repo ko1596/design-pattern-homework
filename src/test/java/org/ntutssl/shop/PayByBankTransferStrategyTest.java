@@ -47,7 +47,7 @@ public class PayByBankTransferStrategyTest implements EventListener{
         ByteArrayOutputStream outStream = new ByteArrayOutputStream();
         PrintStream printStream = new PrintStream(outStream);
         PrintStream originalOut = System.out;
-        String input = "123\n123456123456\n";
+        String input = "123\n123456789123\n";
         byte[] inputBytes = input.getBytes();
         ByteArrayInputStream stream = new ByteArrayInputStream(inputBytes);
         InputStream originIn = System.in;
