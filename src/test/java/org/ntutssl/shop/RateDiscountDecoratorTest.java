@@ -7,9 +7,9 @@ import org.junit.Test;
 public class RateDiscountDecoratorTest {
     @Test
     public void test_decorate_complex_collection(){
-        Collection collection = new Collection(1, "collection", "good");
-        Merchandise merchandise = new Merchandise(2, "merchandise", "script", 1.4);
-        Collection collection2 = new Collection(3, "collection2", "good");
+        Collection collection = new Collection(1, "collection", "c");
+        Merchandise merchandise = new Merchandise(2, "merchandise", "m", 1.4);
+        Collection collection2 = new Collection(3, "collection2", "c");
         collection.add(merchandise);
         collection2.add(merchandise);
         collection.add(collection2);
