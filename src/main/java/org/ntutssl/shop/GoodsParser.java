@@ -17,7 +17,8 @@ public class GoodsParser implements EventListener {
   public GoodsParser() {
     this.goodsBuilder = new GoodsBuilder();
     this.count = 0;
-
+    EventManager.getInstance().subscribe(EventType.IMPORT_SHOPPING_LIST, this);
+    EventManager.getInstance().subscribe(EventType.IMPORT_REPLENISH_LIST, this);
    }
 
   public void onEvent(Event event) {
